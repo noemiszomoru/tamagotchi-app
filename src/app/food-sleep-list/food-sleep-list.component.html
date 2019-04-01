@@ -1,3 +1,14 @@
-<p>
-  food-sleep-list works!
-</p>
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Entry</button>
+    </div>
+</div> -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="list-group-item clearfix" *ngFor="let entry of food_sleep">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ entry.name }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Child } from './child.model';
 import { DataStorageService } from '../shared/data.storage.service';
 import { Group } from '../groups-list/group.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+
+import { Observable, Subscription } from 'rxjs';
+import { switchMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-children-list',
@@ -12,8 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChildrenListComponent implements OnInit {
   private children: Child[] = [];
+  children$: Observable<any>;
 
-  constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute) {
+  constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) {
 
     // this.dataStorageService.getChildren().subscribe((children: Child[]) => {
     //   this.children = children;
@@ -22,7 +26,7 @@ export class ChildrenListComponent implements OnInit {
   }
 
   public groupId: number;
-  private sub: any;
+  private routerNavigationMonitor: Subscription;
 
   public loadList() {
 
@@ -40,25 +44,31 @@ export class ChildrenListComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  private processCurrentRoute = () => {
     this.children = [];
 
-    console.log('Init');
+    if (this.route.firstChild) {
+      this.groupId = this.route.firstChild.snapshot.params.groupId;
+    } else {
+      this.groupId = 0;
+    }
+    
+    //This is how you read the parameter value from the route child 
+    this.loadList();
+  }
 
+  ngOnInit() {
 
-    this.sub = this.route.paramMap.subscribe(params => {
-      console.log('Sub: ' + JSON.stringify(params));
-      this.groupId = +params['groupId']; // (+) converts string 'id' to a number
-      this.loadList();
+    this.processCurrentRoute();
 
-      // In a real app: dispatch action to load the details here.
+    this.routerNavigationMonitor = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
+      this.processCurrentRoute();
     });
-
 
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.routerNavigationMonitor.unsubscribe();
   }
 
 }
