@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Child } from './child.model';
+import { Child } from '../models/child.model';
 import { DataStorageService } from '../shared/data.storage.service';
-import { Group } from '../groups-list/group.model';
+import { Group } from '../models/group.model';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
@@ -52,7 +52,7 @@ export class ChildrenListComponent implements OnInit {
     } else {
       this.groupId = 0;
     }
-    
+
     //This is how you read the parameter value from the route child 
     this.loadList();
   }
@@ -66,6 +66,12 @@ export class ChildrenListComponent implements OnInit {
     });
 
   }
+
+  onNewChild() {
+    this.router.navigate(['new'], { relativeTo: this.route });
+    console.log(1);
+  }
+
 
   ngOnDestroy() {
     this.routerNavigationMonitor.unsubscribe();

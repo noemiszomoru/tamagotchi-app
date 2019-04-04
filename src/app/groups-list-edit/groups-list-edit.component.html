@@ -1,3 +1,17 @@
-<p>
-  groups-list-edit works!
-</p>
+<div class="container" id="addForm">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onAddGroup(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="name" class="font-weight-bold">Group Name</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="" placeholder="Enter group name" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="description" class="font-weight-bold">Description</label>
+                <input type="text" class="form-control" name="description" id="description" placeholder="Describe the group" ngModel>
+            </div>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

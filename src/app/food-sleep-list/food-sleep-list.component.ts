@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FoodSleep } from './food-sleep.model';
+import { FoodSleep } from '../models/food-sleep.model';
 import { DataStorageService } from '../shared/data.storage.service';
 
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
@@ -16,6 +16,8 @@ import { switchMap, filter } from 'rxjs/operators';
 export class FoodSleepListComponent implements OnInit {
   private food_sleep: FoodSleep[] = [];
   food_sleep$: Observable<any>;
+  image = '../assets/food.png';
+  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png'];
 
   constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) { }
 
@@ -60,6 +62,19 @@ export class FoodSleepListComponent implements OnInit {
     });
 
   }
+
+  onImageClick() {
+    if (this.image == this.images[0]) {
+      this.image = this.images[1];
+    }
+    else if (this.image == this.images[1]) {
+      this.image = this.images[2];
+    }
+    else {
+      this.image = this.images[0];
+    }
+  }
+
 
   ngOnDestroy() {
     this.routerNavigationMonitor.unsubscribe();

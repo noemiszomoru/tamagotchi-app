@@ -1,16 +1,20 @@
-<div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success">New Child</button>
+<div class="spacer20"></div>
+<div class="container">
+    <div class="row">
+        <div class="col text-right">
+            <button class="btn btn-secondary btn-sm" (click)="onNewChild()">Add Child</button>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-        <ol>
-            <a href="#" class="list-group-item clearfix" *ngFor="let child of children">
-                <div class="pull-left">
-                    <li class="list-group-item-heading">{{ child.name }}</li>
-                </div>
-            </a>
-        </ol>
+<div class="spacer20"></div>
+<div class="container">
+    <div class="col-xs-4">
+        <a href="#" class="list-group-item clearfix" *ngFor="let child of children">
+            <div class="pull-left">
+                <h5 class="list-group-item-heading">{{ child.name }}</h5>
+            </div>
+        </a>
     </div>
 </div>
+
+<app-children-list-edit></app-children-list-edit>

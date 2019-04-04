@@ -5,9 +5,33 @@
 </div> -->
 <div class="row">
     <div class="col-xs-12">
-        <div class="list-group-item clearfix" *ngFor="let entry of food_sleep">
-            <div class="pull-left">
-                <h4 class="list-group-item-heading">{{ entry.name }}</h4>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="list-group-item clearfix" *ngFor="let entry of food_sleep">
+                    <div class="pull-left">
+                        <h4 class="list-group-item-heading">{{ entry.name }}</h4>
+                        <img id="sleep" src="../assets/sleep.png" class="img-fluid">
+                        <div class="dropdown" id="foodDropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                             <img src="../assets/food.png" class="img-fluid" style="max-height: 40px;">
+                               <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="foodDropdown">
+                                <li role="presentation">
+                                    <h6>Breakfast</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
+                                </li>
+                                <li role="presentation">
+                                    <h6>Soup</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
+                                </li>
+                                <li role="presentation">
+                                    <h6>Main Dish</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

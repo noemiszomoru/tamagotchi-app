@@ -1,14 +1,17 @@
-<div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success">New Group</button>
-    </div>
-</div>
-<div class="row">
+<div class="container">
     <div class="col-xs-12">
         <a routerLink="/children/{{ group.pk }}" class="list-group-item clearfix" *ngFor="let group of groups">
             <div class="pull-left">
-                <h4 class="list-group-item-heading">{{ group.name }}</h4>
+                <button type="button" class="btn btn-info btn-lg btn-block">{{ group.name }}</button>
             </div>
         </a>
+    </div>
+</div>
+<div class="spacer20"></div>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-dark btn-sm" (click)="onNewGroup()">Add Group</button>
+        </div>
     </div>
 </div>

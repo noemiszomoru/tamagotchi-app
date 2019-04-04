@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Group } from '../groups-list/group.model';
-import { Child } from '../children-list/child.model';
+import { Group } from '../models/group.model';
+import { Child } from '../models/child.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -27,6 +27,10 @@ export class DataStorageService {
         } else {
             return this.httpClient.get('http://localhost:8080/food-sleep');
         }
+    }
+
+    getUsers(): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/users');
     }
 
 }

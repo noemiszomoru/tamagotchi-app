@@ -10,6 +10,7 @@ export class FoodSleepListEditComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
