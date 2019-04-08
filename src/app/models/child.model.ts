@@ -1,10 +1,9 @@
 export class Child {
-    // public pk: number;
+    public pk: number;
     public name: string;
     public group_id: number;
 
-    constructor(/*pk: number*/ name: string, group_id: number) {
-        // this.pk = pk;
+    constructor(name: string, group_id: number) {
         this.name = name;
         this.group_id = group_id;
     }

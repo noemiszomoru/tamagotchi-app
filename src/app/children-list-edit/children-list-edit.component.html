@@ -7,23 +7,23 @@
             </div>
             <div class="form-group">
                 <label for="group" class="font-weight-bold">Group</label>
-                <select class="form-control" name="group" id="group" ngModel>
-                    <option *ngFor="let group of groups" value="{{ group.group_id }}">{{ group.name }}</option>
+                <select class="form-control" name="group" id="group" [(ngModel)]="selectedGroup">
+                    <option *ngFor="let group of groups" [(ngValue)]="group">{{ group.name }}</option>
                   </select>
             </div>
             <div class="form-group">
                 <label for="users" class="font-weight-bold">Users</label>
-                <select multiple class="form-control" name="users" id="users" ngModel>
-                  <option *ngFor="let user of users" value="{{ user.name }}">{{ user.name }}</option>
+                <select class="form-control" name="users" id="users" [(ngModel)]="selectedUser">
+                  <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
                 </select>
-                <button class="btn btn-secondary" (click)="onAddParent()">+</button>
-                <button class="btn btn-secondary" (click)="onRemoveParent()">-</button>
+                <button type="button" class="btn btn-secondary" (click)="onAddUser()">+</button>
+                <button type="button" class="btn btn-secondary" (click)="onRemoveParent()">-</button>
             </div>
             <div class="form-group">
                 <label for="parents">Parents</label>
-                <select multiple class="form-control" id="parents">
-                    <option value=""></option>
-                </select>
+                <select name="parents" multiple class="form-control" [(ngModel)]="parents">
+                        <option *ngFor="let parent of parents" [ngValue]="parent">{{ parent.name }}</option>
+                    </select>
             </div>
 
             <div class="col text-center">

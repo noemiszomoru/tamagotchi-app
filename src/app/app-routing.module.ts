@@ -10,6 +10,12 @@ import { ChildrenListEditComponent } from './children-list-edit/children-list-ed
 const appRoutes: Routes = [
   { path: '', redirectTo: '/groups', pathMatch: 'full' },
   {
+    path: 'groups/new', component: GroupsListEditComponent, children: [
+      // { path: ':id', component: GroupItemComponent }
+      // { path: 'new', component: GroupsListEditComponent }
+    ]
+  },
+  {
     path: 'groups', component: GroupsListComponent, children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
@@ -22,14 +28,15 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'children', component: ChildrenListComponent, children: [
-      { path: ':groupId', component: ChildrenListComponent },
-      // { path: 'new', component: ChildrenListEditComponent }
+    path: 'children/new', component: ChildrenListEditComponent, children: [
+      // { path: ':id', component: GroupItemComponent }
     ]
   },
   {
-    path: 'children/new', component: ChildrenListEditComponent, children: [
-      // { path: ':id', component: GroupItemComponent }
+    path: 'children', component: ChildrenListComponent, children: [
+      // { path: 'new', component: ChildrenListEditComponent },
+      { path: ':groupId', component: ChildrenListComponent }
+
     ]
   },
   { path: 'food-sleep', component: FoodSleepListComponent },
@@ -37,7 +44,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

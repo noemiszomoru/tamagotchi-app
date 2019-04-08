@@ -1,12 +1,11 @@
 export class User {
-    // public pk: number;
+    public pk: number = 0;
     public role: string;
     public name: string;
     public email: string;
     public username: string;
 
-    constructor(/*pk: number*/role: string, name: string, email: string, username: string) {
-        // this.pk = pk;
+    constructor(role: string, name: string, email: string, username: string) {
         this.role = role;
         this.name = name;
         this.email = email;

@@ -3,7 +3,15 @@ import { Injectable } from '@angular/core';
 import { Group } from '../models/group.model';
 import { Child } from '../models/child.model';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { ChildWrapper } from '../models/child.wrapper.model';
+
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+
+}
 
 @Injectable()
 export class DataStorageService {
@@ -31,6 +39,11 @@ export class DataStorageService {
 
     getUsers(): Observable<Object> {
         return this.httpClient.get('http://localhost:8080/users');
+    }
+
+    saveChild(child: ChildWrapper): Observable<ChildWrapper> {
+        return this.httpClient.post<ChildWrapper>('http://localhost:8080/child', child, httpOptions)
+
     }
 
 }

@@ -23,13 +23,13 @@ import { DataStorageService } from './shared/data.storage.service';
     GroupsListComponent,
     GroupsListEditComponent,
     FoodSleepListComponent,
-    FoodSleepListEditComponent
+    FoodSleepListEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [DataStorageService],
   bootstrap: [AppComponent]
