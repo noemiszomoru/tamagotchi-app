@@ -5,34 +5,16 @@
 </div> -->
 <div class="row">
     <div class="col-xs-12">
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="list-group-item clearfix" *ngFor="let entry of food_sleep">
-                    <div class="pull-left">
-                        <h4 class="list-group-item-heading">{{ entry.name }}</h4>
-                        <img id="sleep" src="../assets/sleep.png" class="img-fluid">
-                        <div class="dropdown" id="foodDropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                             <img src="../assets/food.png" class="img-fluid" style="max-height: 40px;">
-                               <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="foodDropdown">
-                                <li role="presentation">
-                                    <h6>Breakfast</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
-                                </li>
-                                <li role="presentation">
-                                    <h6>Soup</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
-                                </li>
-                                <li role="presentation">
-                                    <h6>Main Dish</h6><img id="dropdownFood" src={{image}} class="img-fluid" (click)="onImageClick()">
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+        <div class="datePicker">
+            <i class="fa fa-chevron-circle-left" style="font-size:24px" (click)="previousDate()"></i>
+            <h5 class="dateHeader">{{ date }}</h5>
+            <i class="fa fa-chevron-circle-right" style="font-size:24px" (click)="nextDate()"></i>
         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <app-food-sleep-item *ngFor="let item of food_sleep" [food_sleepEl]="item"></app-food-sleep-item>
     </div>
 </div>

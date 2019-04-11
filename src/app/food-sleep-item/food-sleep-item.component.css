@@ -1,0 +1,9 @@
+#sleep {
+    float: right;
+    max-height: 30px;
+    padding-left: 100px;
+}
+
+.food-item {
+    display: inline-block;
+}

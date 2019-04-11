@@ -5,6 +5,7 @@ import { Child } from '../models/child.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { ChildWrapper } from '../models/child.wrapper.model';
+import { FoodSleep } from '../models/food-sleep.model';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -44,6 +45,15 @@ export class DataStorageService {
     saveChild(child: ChildWrapper): Observable<ChildWrapper> {
         return this.httpClient.post<ChildWrapper>('http://localhost:8080/child', child, httpOptions)
 
+    }
+
+    saveGroup(group: Group): Observable<Group> {
+        return this.httpClient.post<Group>('http://localhost:8080/group', group, httpOptions)
+
+    }
+
+    addFoodData(food_sleepEl: FoodSleep): Observable<FoodSleep> {
+        return this.httpClient.post<FoodSleep>('http://localhost:8080/food', food_sleepEl, httpOptions)
     }
 
 }

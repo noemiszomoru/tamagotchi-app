@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 import { FoodSleep } from '../models/food-sleep.model';
 import { DataStorageService } from '../shared/data.storage.service';
@@ -16,8 +17,9 @@ import { switchMap, filter } from 'rxjs/operators';
 export class FoodSleepListComponent implements OnInit {
   private food_sleep: FoodSleep[] = [];
   food_sleep$: Observable<any>;
-  image = '../assets/food.png';
-  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png'];
+  date: string;
+  changedDate: Date;
+  today: Date;
 
   constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) { }
 
@@ -53,6 +55,38 @@ export class FoodSleepListComponent implements OnInit {
     this.loadList();
   }
 
+  getDate() {
+    this.today = new Date();
+    this.date = formatDate(this.today, 'EEEE, d\'th\' of MMMM, y', 'en');
+  }
+
+  nextDate() {
+    this.changedDate = this.today;
+    this.changedDate.setDate(this.today.getDate() + 1);
+    if (this.changedDate.getDay() === 0) {
+      this.changedDate.setDate(this.today.getDate() + 2);
+    }
+    else if (this.changedDate.getDay() === 6) {
+      this.changedDate.setDate(this.today.getDate() + 2);
+    }
+    this.today = this.changedDate;
+    this.date = formatDate(this.today, 'EEEE, d\'th\' of MMMM, y', 'en');
+  }
+
+  previousDate() {
+    this.changedDate = this.today;
+    this.changedDate.setDate(this.today.getDate() - 1);
+    if (this.changedDate.getDay() === 0) {
+      this.changedDate.setDate(this.today.getDate() - 2);
+    }
+    else if (this.changedDate.getDay() === 6) {
+      this.changedDate.setDate(this.today.getDate() - 2);
+    }
+    this.today = this.changedDate;
+    this.date = formatDate(this.today, 'EEEE, d\'th\' of MMMM, y', 'en');
+  }
+
+
   ngOnInit() {
 
     this.processCurrentRoute();
@@ -61,20 +95,9 @@ export class FoodSleepListComponent implements OnInit {
       this.processCurrentRoute();
     });
 
-  }
+    this.getDate();
 
-  onImageClick() {
-    if (this.image == this.images[0]) {
-      this.image = this.images[1];
-    }
-    else if (this.image == this.images[1]) {
-      this.image = this.images[2];
-    }
-    else {
-      this.image = this.images[0];
-    }
   }
-
 
   ngOnDestroy() {
     this.routerNavigationMonitor.unsubscribe();

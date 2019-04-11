@@ -22,23 +22,23 @@
     height: 30px;
 }
 
-#foodDropdown {
-    float: right;
-    margin-right: 40px;
-}
-
-#sleep {
-    float: right;
-    max-height: 30px;
-}
-
 h4,
 h6 {
     float: left;
 }
 
-#dropdownFood {
-    max-height: 40px;
+#Food {
+    max-height: 30px;
+    float: right;
+}
+
+figure {
+    float: right;
+    max-width: 50px;
+    text-align: center;
+    margin: 0;
+    padding-left: 5px;
+    font-size: smaller;
 }
 
 #addForm {

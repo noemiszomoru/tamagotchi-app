@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { GroupsListComponent } from './groups-list/groups-list.component';
-import { GroupsListEditComponent } from './groups-list-edit/groups-list-edit.component';
+import { GroupsEditComponent } from './groups-edit/groups-edit.component';
 import { ChildrenListComponent } from './children-list/children-list.component';
 import { FoodSleepListComponent } from './food-sleep-list/food-sleep-list.component';
 import { ChildrenListEditComponent } from './children-list-edit/children-list-edit.component';
@@ -10,7 +10,7 @@ import { ChildrenListEditComponent } from './children-list-edit/children-list-ed
 const appRoutes: Routes = [
   { path: '', redirectTo: '/groups', pathMatch: 'full' },
   {
-    path: 'groups/new', component: GroupsListEditComponent, children: [
+    path: 'groups/new', component: GroupsEditComponent, children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'groups/new', component: GroupsListEditComponent, children: [
+    path: 'groups/new', component: GroupsEditComponent, children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]

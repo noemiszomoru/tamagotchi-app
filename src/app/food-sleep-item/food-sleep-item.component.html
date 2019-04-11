@@ -1,0 +1,23 @@
+<div class="row ">
+    <div class="col-xs-12">
+        <div class="list-group-item clearfix">
+            <div class="pull-left food-item">
+                <h5 class="list-group-item-heading">{{ food_sleepEl.name }}</h5>
+                <hr>
+                <img id="sleep" src="../assets/sleep.png" class="img-fluid">
+                <figure class="figure">
+                    <img src={{image_br}} class="figure-img img-fluid rounded" (click)="onImageClickBr()">
+                    <figcaption class="figure-caption">Breakfast</figcaption>
+                </figure>
+                <figure class="figure">
+                    <img src={{image_soup}} class="figure-img img-fluid rounded" (click)="onImageClickSoup()">
+                    <figcaption class="figure-caption">Soup</figcaption>
+                </figure>
+                <figure class="figure">
+                    <img src={{image_md}} class="figure-img img-fluid rounded" (click)="onImageClickMd()">
+                    <figcaption class="figure-caption">Main Dish</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
