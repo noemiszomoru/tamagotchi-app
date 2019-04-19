@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataStorageService } from '../shared/data.storage.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,6 @@ import { DataStorageService } from '../shared/data.storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {

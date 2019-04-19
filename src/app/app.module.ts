@@ -10,11 +10,13 @@ import { HeaderComponent } from './header/header.component';
 import { ChildrenListComponent } from './children-list/children-list.component';
 import { ChildrenListEditComponent } from './children-list-edit/children-list-edit.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
-import { GroupsEditComponent } from './groups-edit/groups-edit.component';
+import { GroupsEditComponent } from './groups-list/groups-edit/groups-edit.component';
 import { FoodSleepListComponent } from './food-sleep-list/food-sleep-list.component';
-import { FoodSleepListEditComponent } from './food-sleep-list-edit/food-sleep-list-edit.component';
 import { DataStorageService } from './shared/data.storage.service';
 import { FoodSleepItemComponent } from './food-sleep-item/food-sleep-item.component';
+import { UsersComponent } from './users/users.component';
+import { UsersEditComponent } from './users/users-edit/users-edit.component';
+import { TimepickerComponent } from './food-sleep-item/timepicker/timepicker.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { FoodSleepItemComponent } from './food-sleep-item/food-sleep-item.compon
     GroupsListComponent,
     GroupsEditComponent,
     FoodSleepListComponent,
-    FoodSleepListEditComponent,
     FoodSleepItemComponent,
+    UsersComponent,
+    UsersEditComponent,
+    TimepickerComponent,
   ],
   imports: [
     BrowserModule,

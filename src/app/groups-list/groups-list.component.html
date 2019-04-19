@@ -1,8 +1,14 @@
 <div class="container">
     <div class="col-xs-12">
         <a routerLink="/children/{{ group.pk }}" class="list-group-item clearfix" *ngFor="let group of groups">
-            <div class="pull-left">
-                <button type="button" class="btn btn-info btn-lg btn-block">{{ group.name }}</button>
+            <div class="col-xs-6 text-left">
+                <button type="button" class="btn btn-light btn-lg btn-block">{{ group.name }}</button>
+            </div>
+            <div class="edit-del-buttons row">
+                <div class="col-xs-6">
+                    <button type="button" class="e-d-buttons btn btn-danger btn-sm pull-right">X</button>
+                    <button type="button" class="e-d-buttons btn btn-warning btn-sm pull-right">&#x270F;</button>
+                </div>
             </div>
         </a>
     </div>

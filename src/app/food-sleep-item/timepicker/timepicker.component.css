@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('/assets/DS-Digital.woff2') format('woff2'), url('/assets/DS-Digital.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.timepicker {
+    font-family: 'DS-Digital';
+    display: inline-block;
+}

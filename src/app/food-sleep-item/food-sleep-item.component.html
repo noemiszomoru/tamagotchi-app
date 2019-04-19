@@ -1,10 +1,21 @@
 <div class="row ">
     <div class="col-xs-12">
         <div class="list-group-item clearfix">
-            <div class="pull-left food-item">
+            <div class=" food-sleep-item">
                 <h5 class="list-group-item-heading">{{ food_sleepEl.name }}</h5>
                 <hr>
-                <img id="sleep" src="../assets/sleep.png" class="img-fluid">
+                <!-- <img id="sleep" src="../assets/sleep.png" class="img-fluid"> -->
+                <div class="sleep">
+                    <p>Start
+                        <app-timepicker #start [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier" (touchend)="onTimeMove()"></app-timepicker>
+                    </p>
+
+                    <hr>
+                    <p>End
+                        <app-timepicker #end [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier" (touchend)="onTimeMove()"></app-timepicker>
+                    </p>
+                </div>
+
                 <figure class="figure">
                     <img src={{image_br}} class="figure-img img-fluid rounded" (click)="onImageClickBr()">
                     <figcaption class="figure-caption">Breakfast</figcaption>

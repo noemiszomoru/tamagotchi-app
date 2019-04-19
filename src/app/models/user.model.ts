@@ -1,13 +1,13 @@
 export class User {
     public pk: number = 0;
-    public role: string;
     public name: string;
+    public role: string;
     public email: string;
     public username: string;
 
-    constructor(role: string, name: string, email: string, username: string) {
-        this.role = role;
+    constructor(name: string, role: string, email: string, username: string) {
         this.name = name;
+        this.role = role;
         this.email = email;
         this.username = username;
     }

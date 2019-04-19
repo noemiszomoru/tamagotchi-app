@@ -1,0 +1,18 @@
+<div class="spacer20"></div>
+<div class="container">
+    <div class="row">
+        <div class="col text-right">
+            <button class="btn btn-secondary btn-sm" (click)="onNewUser()">Add User</button>
+        </div>
+    </div>
+</div>
+<div class="spacer20"></div>
+<div class="container">
+    <div class="col-xs-4">
+        <a href="#" class="list-group-item clearfix" *ngFor="let user of users">
+            <div class="pull-left">
+                <h5 class="list-group-item-heading">{{ user.name }} || {{ user.role }}</h5>
+            </div>
+        </a>
+    </div>
+</div>

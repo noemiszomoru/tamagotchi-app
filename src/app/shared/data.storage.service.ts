@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { ChildWrapper } from '../models/child.wrapper.model';
 import { FoodSleep } from '../models/food-sleep.model';
+import { FoodEntry } from '../models/food-entry.model';
+import { User } from '../models/user.model';
+import { SleepEntry } from '../models/sleep-entry.model';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -30,12 +33,16 @@ export class DataStorageService {
         }
     }
 
-    getFoodSleepList(groupId: number = 0): Observable<Object> {
-        if (groupId) {
-            return this.httpClient.get('http://localhost:8080/food-sleep/' + groupId);
-        } else {
-            return this.httpClient.get('http://localhost:8080/food-sleep');
-        }
+    // getFoodSleepList(groupId: number = 0): Observable<Object> {
+    //     if (groupId) {
+    //         return this.httpClient.get('http://localhost:8080/food-sleep/' + groupId);
+    //     } else {
+    //         return this.httpClient.get('http://localhost:8080/food-sleep');
+    //     }
+    // }
+
+    getFoodSleepList(date_param: string): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/food-sleep/' + date_param);
     }
 
     getUsers(): Observable<Object> {
@@ -52,8 +59,17 @@ export class DataStorageService {
 
     }
 
-    addFoodData(food_sleepEl: FoodSleep): Observable<FoodSleep> {
-        return this.httpClient.post<FoodSleep>('http://localhost:8080/food', food_sleepEl, httpOptions)
+    saveUser(user: User): Observable<User> {
+        return this.httpClient.post<User>('http://localhost:8080/user', user, httpOptions)
+
+    }
+
+    addFoodData(food_entry: FoodEntry): Observable<FoodSleep> {
+        return this.httpClient.post<FoodSleep>('http://localhost:8080/food', food_entry, httpOptions)
+    }
+
+    addSleepData(sleep_entry: SleepEntry): Observable<FoodSleep> {
+        return this.httpClient.post<FoodSleep>('http://localhost:8080/sleep', sleep_entry, httpOptions)
     }
 
 }

@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Group } from '../models/group.model';
-import { DataStorageService } from '../shared/data.storage.service';
+import { Group } from '../../models/group.model';
+import { DataStorageService } from '../../shared/data.storage.service';
 
 
 @Component({
