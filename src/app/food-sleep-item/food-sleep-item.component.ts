@@ -22,14 +22,93 @@ export class FoodSleepItemComponent implements OnInit {
   image_br = '../assets/food.png';
   image_soup = '../assets/food.png';
   image_md = '../assets/food.png';
-  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png'];
+  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png'];
   breakfast_values = [0, 0.5, 1];
   soup_values = [0, 0.5, 1];
   main_dish_values = [0, 0.5, 1];
 
   constructor(private dataStorageService: DataStorageService, private router: Router) { }
 
+  displayStartTime(value: number) {
+    if (value == null) {
+
+      this.start.time = {
+        hour: 12,
+        minute: 0
+      }
+
+    } else {
+      this.start.time = {
+        hour: Math.floor(value / 60),
+        minute: value % 60
+      };
+    }
+
+    this.start.updateComponent();
+  }
+
+  displayEndTime(value: number) {
+    if (value == null) {
+
+      this.end.time = {
+        hour: 12,
+        minute: 0
+      }
+
+    } else {
+      this.end.time = {
+        hour: Math.floor(value / 60),
+        minute: value % 60
+      };
+    }
+
+    this.end.updateComponent();
+  }
+
+  displayBrImage(value: number) {
+    if (value == 0) {
+      this.image_br = this.images[2];
+    } else if (value == 0.5) {
+      this.image_br = this.images[1];
+    } else if (value == 1) {
+      this.image_br = this.images[0];
+    } else {
+      this.image_br = this.images[3];
+    }
+  }
+
+  displaySoupImage(value: number) {
+    if (value == 0) {
+      this.image_soup = this.images[2];
+    } else if (value == 0.5) {
+      this.image_soup = this.images[1];
+    } else if (value == 1) {
+      this.image_soup = this.images[0];
+    } else {
+      this.image_soup = this.images[3];
+    }
+  }
+
+  displayMdImage(value: number) {
+    if (value == 0) {
+      this.image_md = this.images[2];
+    } else if (value == 0.5) {
+      this.image_md = this.images[1];
+    } else if (value == 1) {
+      this.image_md = this.images[0];
+    } else {
+      this.image_md = this.images[3];
+    }
+  }
+
   ngOnInit() {
+
+    this.displayStartTime(this.food_sleepEl.start_at);
+    this.displayEndTime(this.food_sleepEl.end_at);
+
+    this.displayBrImage(this.food_sleepEl.breakfast);
+    this.displaySoupImage(this.food_sleepEl.soup);
+    this.displayMdImage(this.food_sleepEl.main_dish);
 
   }
 

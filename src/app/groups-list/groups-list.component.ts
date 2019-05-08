@@ -28,4 +28,10 @@ export class GroupsListComponent implements OnInit {
     console.log(1);
   }
 
+  // onEditGroup() {
+  //   this.router.navigate(['/group'], { queryParams: { id: id } });
+  //   console.log(1);
+
+  // }
+
 }

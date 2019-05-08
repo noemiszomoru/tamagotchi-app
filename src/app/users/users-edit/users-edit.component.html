@@ -2,21 +2,21 @@
     <div class="col-xs-12">
         <form (ngSubmit)="onAddUser(f)" #f="ngForm">
             <div class="form-group">
-                <label for="name" class="font-weight-bold">Name</label>
+                <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" aria-describedby="" placeholder="Enter name" ngModel required>
             </div>
             <div class="form-group">
-                <label for="role" class="font-weight-bold">Role</label>
+                <label for="role">Role</label>
                 <select class="form-control" name="role" id="role" [(ngModel)]="selectedRole">
                 <option *ngFor="let role of roles" [(ngValue)]="role">{{ role }}</option>
               </select>
             </div>
             <div class="form-group">
-                <label for="email" class="font-weight-bold">Email</label>
+                <label for="email">Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" ngModel>
             </div>
             <div class="form-group">
-                <label for="username" class="font-weight-bold">Username</label>
+                <label for="username">Username</label>
                 <input type="username" class="form-control" name="username" id="username" placeholder="Enter username" ngModel>
             </div>
 

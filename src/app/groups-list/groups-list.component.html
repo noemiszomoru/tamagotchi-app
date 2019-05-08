@@ -1,23 +1,19 @@
 <div class="container">
     <div class="col-xs-12">
-        <a routerLink="/children/{{ group.pk }}" class="list-group-item clearfix" *ngFor="let group of groups">
-            <div class="col-xs-6 text-left">
-                <button type="button" class="btn btn-light btn-lg btn-block">{{ group.name }}</button>
+        <div class="list-group" *ngFor="let group of groups">
+            <div class="group-item">
+                <a routerLink="/children/{{ group.pk }}" class="list-group-item list-group-item-action">{{ group.name }}
+                    </a>
+                <button routerLink="/group/{{ group.pk }}" type="button " class="edit-button btn btn-light btn-sm pull-right ">&#x270F;</button>
             </div>
-            <div class="edit-del-buttons row">
-                <div class="col-xs-6">
-                    <button type="button" class="e-d-buttons btn btn-danger btn-sm pull-right">X</button>
-                    <button type="button" class="e-d-buttons btn btn-warning btn-sm pull-right">&#x270F;</button>
-                </div>
-            </div>
-        </a>
+        </div>
     </div>
 </div>
-<div class="spacer20"></div>
-<div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <button class="btn btn-dark btn-sm" (click)="onNewGroup()">Add Group</button>
+<div class="spacer20 "></div>
+<div class="container ">
+    <div class="row ">
+        <div class="col text-center ">
+            <button class="btn btn-dark btn-sm " (click)="onNewGroup() ">Add Group</button>
         </div>
     </div>
 </div>

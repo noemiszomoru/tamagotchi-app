@@ -2,17 +2,17 @@
     <div class="col-xs-12">
         <form (ngSubmit)="onAddChild(f)" #f="ngForm">
             <div class="form-group">
-                <label for="name" class="font-weight-bold">Child Name</label>
+                <label for="name">Child Name</label>
                 <input type="text" class="form-control" name="name" id="name" aria-describedby="" placeholder="" ngModel required>
             </div>
             <div class="form-group">
-                <label for="group" class="font-weight-bold">Group</label>
+                <label for="group">Group</label>
                 <select class="form-control" name="group" id="group" [(ngModel)]="selectedGroup">
                     <option *ngFor="let group of groups" [(ngValue)]="group">{{ group.name }}</option>
                   </select>
             </div>
             <div class="form-group">
-                <label for="users" class="font-weight-bold">Users</label>
+                <label for="users">Users</label>
                 <select class="form-control" name="users" id="users" [(ngModel)]="selectedUser">
                   <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
                 </select>

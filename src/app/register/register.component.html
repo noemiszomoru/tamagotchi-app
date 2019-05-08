@@ -1,0 +1,43 @@
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <img src="../assets/logo.png" class="img-fluid rounded mx-auto d-block" alt="">
+
+                <form class="login-form" (ngSubmit)="onRegister(f)" #f="ngForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="" ngModel required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select class="form-control" name="role" id="role" [(ngModel)]="selectedRole">
+                          <option *ngFor="let role of roles" [(ngValue)]="role">{{ role }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="" ngModel required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="" ngModel required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="" ngModel required>
+                    </div>
+
+
+                    <!-- <div class="form-check">
+                      <label class="form-check-label">
+  <input type="checkbox" class="form-check-input">
+  <small>Remember Me</small>
+</label> </div> -->
+                    <div class="col text-center ">
+                        <button type="submit" class="btn btn-dark btn-login">Register</button>
+                    </div>
+                </form>

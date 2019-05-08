@@ -8,53 +8,63 @@ import { FoodSleepListComponent } from './food-sleep-list/food-sleep-list.compon
 import { ChildrenListEditComponent } from './children-list-edit/children-list-edit.component';
 import { UsersComponent } from './users/users.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/groups', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
-    path: 'groups/new', component: GroupsEditComponent, children: [
+    path: 'group/:id', component: GroupsEditComponent, canActivate: [AuthGuard], children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'groups', component: GroupsListComponent, children: [
+    path: 'groups/new', component: GroupsEditComponent, canActivate: [AuthGuard], children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'groups/new', component: GroupsEditComponent, children: [
-      // { path: ':id', component: GroupItemComponent }
+    path: 'groups', component: GroupsListComponent, canActivate: [AuthGuard], children: [
+      // { path: ':id', component: GroupsEditComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'children/new', component: ChildrenListEditComponent, children: [
+    path: 'child/:id', component: ChildrenListEditComponent, canActivate: [AuthGuard], children: [
       // { path: ':id', component: GroupItemComponent }
     ]
   },
   {
-    path: 'children', component: ChildrenListComponent, children: [
+    path: 'children/new', component: ChildrenListEditComponent, canActivate: [AuthGuard], children: [
+      // { path: ':id', component: GroupItemComponent }
+    ]
+  },
+  {
+    path: 'children', component: ChildrenListComponent, canActivate: [AuthGuard], children: [
       // { path: 'new', component: ChildrenListEditComponent },
       { path: ':groupId', component: ChildrenListComponent }
 
     ]
   },
   {
-    path: 'users', component: UsersComponent, children: [
+    path: 'users', component: UsersComponent, canActivate: [AuthGuard], children: [
       // { path: 'new', component: ChildrenListEditComponent },
 
     ]
   },
   {
-    path: 'users/new', component: UsersEditComponent, children: [
+    path: 'users/new', component: UsersEditComponent, canActivate: [AuthGuard], children: [
       // { path: 'new', component: ChildrenListEditComponent },
 
     ]
   },
   {
-    path: 'food-sleep', component: FoodSleepListComponent, children: [
+    path: 'food-sleep', component: FoodSleepListComponent, canActivate: [AuthGuard], children: [
       { path: ':date', component: FoodSleepListComponent }
 
     ]

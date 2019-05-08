@@ -17,6 +17,9 @@ import { FoodSleepItemComponent } from './food-sleep-item/food-sleep-item.compon
 import { UsersComponent } from './users/users.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { TimepickerComponent } from './food-sleep-item/timepicker/timepicker.component';
+import { AuthModule } from './auth/auth.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +34,16 @@ import { TimepickerComponent } from './food-sleep-item/timepicker/timepicker.com
     UsersComponent,
     UsersEditComponent,
     TimepickerComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AuthModule,
   ],
   providers: [DataStorageService],
   bootstrap: [AppComponent]

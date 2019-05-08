@@ -1,3 +1,11 @@
-.e-d-buttons {
-    width: 35px;
+.group-item {
+    display: inline-flex;
+}
+
+.list-group-item {
+    width: 90%;
+}
+
+.edit-button {
+    width: 15px;
 }

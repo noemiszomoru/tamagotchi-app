@@ -25,6 +25,10 @@ export class DataStorageService {
         return this.httpClient.get('http://localhost:8080/groups');
     }
 
+    getGroup(id: number): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/group/' + id);
+    }
+
     getChildren(groupId: number = 0): Observable<Object> {
         if (groupId) {
             return this.httpClient.get('http://localhost:8080/children/' + groupId);
@@ -57,6 +61,10 @@ export class DataStorageService {
     saveGroup(group: Group): Observable<Group> {
         return this.httpClient.post<Group>('http://localhost:8080/group', group, httpOptions)
 
+    }
+
+    deleteGroup(id: number): Observable<Object> {
+        return this.httpClient.delete('http://localhost:8080/groups/' + id)
     }
 
     saveUser(user: User): Observable<User> {

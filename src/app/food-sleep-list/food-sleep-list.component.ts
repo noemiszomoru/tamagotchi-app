@@ -32,6 +32,8 @@ export class FoodSleepListComponent implements OnInit {
     // if (this.groupId) {
     this.dataStorageService.getFoodSleepList(this.dateIdentifier).subscribe((food_sleep: FoodSleep[]) => {
       this.food_sleep = food_sleep;
+      console.log(this.dateIdentifier);
+      console.log(this.food_sleep);
       console.log(`Records loaded ... OK`);
     });
 

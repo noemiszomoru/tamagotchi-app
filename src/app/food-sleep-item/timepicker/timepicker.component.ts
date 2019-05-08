@@ -16,7 +16,7 @@ export class TimepickerComponent implements OnInit {
   @Input() start: number;
   @Input() end: number;
 
-  private time = {
+  public time = {
     hour: 13,
     minute: 30
   };

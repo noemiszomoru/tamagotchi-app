@@ -8,10 +8,10 @@ export class FoodSleep {
     public breakfast: number;
     public soup: number;
     public main_dish: number;
-    public start_at: Time;
-    public end_at: Time;
+    public start_at: number;
+    public end_at: number;
 
-    constructor(name: string, group_id: number, date: string, breakfast: number, soup: number, main_dish: number, start_at: Time, end_at: Time) {
+    constructor(name: string, group_id: number, date: string, breakfast: number, soup: number, main_dish: number, start_at: number, end_at: number) {
         this.name = name;
         this.group_id = group_id;
         this.date = date;
