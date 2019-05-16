@@ -20,6 +20,8 @@ import { TimepickerComponent } from './food-sleep-item/timepicker/timepicker.com
 import { AuthModule } from './auth/auth.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
+import { TokenComponent } from './token/token.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { RegisterComponent } from './register/register.component';
     UsersEditComponent,
     TimepickerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SetPasswordComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,

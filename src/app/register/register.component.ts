@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.router.navigate(['/food-sleep']);
-          console.log('merge?');
         }
       });
   }

@@ -68,7 +68,7 @@ export class DataStorageService {
     }
 
     saveUser(user: User): Observable<User> {
-        return this.httpClient.post<User>('http://localhost:8080/user', user, httpOptions)
+        return this.httpClient.post<User>('http://localhost:8080/sendEmail', user, httpOptions)
 
     }
 

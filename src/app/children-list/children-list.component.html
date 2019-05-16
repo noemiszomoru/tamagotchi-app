@@ -8,13 +8,12 @@
 </div>
 <div class="spacer20"></div>
 <div class="container">
-    <div class="col-xs-4">
-        <a href="#" class="list-group-item clearfix" *ngFor="let child of children">
-            <div class="pull-left">
-                <h5 class="list-group-item-heading">{{ child.name }}</h5>
-                <button type="button" class="e-d-buttons btn btn-danger btn-sm pull-right">X</button>
-                <button type="button" class="e-d-buttons btn btn-warning btn-sm pull-right">&#x270F;</button>
+    <div class="col-xs-12">
+        <div class="list-group" *ngFor="let child of children">
+            <div class="group-item">
+                <li class="list-group-item list-group-item-action">{{ child.name }}</li>
+                <button routerLink="/child/{{ child.pk }}" type="button" class="edit-button btn btn-light btn-sm pull-right">&#x270F;</button>
             </div>
-        </a>
+        </div>
     </div>
 </div>

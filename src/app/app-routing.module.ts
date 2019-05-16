@@ -11,6 +11,9 @@ import { UsersEditComponent } from './users/users-edit/users-edit.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
+import { TokenComponent } from './token/token.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -68,6 +71,12 @@ const appRoutes: Routes = [
       { path: ':date', component: FoodSleepListComponent }
 
     ]
+  },
+  {
+    path: 'token/:token', component: TokenComponent,
+  },
+  {
+    path: 'set-password', component: SetPasswordComponent, canActivate: [AuthGuard],
   },
 
 ];
