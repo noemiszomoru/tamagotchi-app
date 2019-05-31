@@ -1,14 +1,14 @@
 <div class="container" id="addForm">
     <div class="col-xs-12">
-        <form (ngSubmit)="onAddChild(f)" #f="ngForm">
+        <form>
             <div class="form-group">
                 <label for="name">Child Name</label>
-                <input type="text" class="form-control" name="name" id="name" aria-describedby="" placeholder="" ngModel required>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="" placeholder="" [(ngModel)]="child.name" required>
             </div>
             <div class="form-group">
                 <label for="group">Group</label>
                 <select class="form-control" name="group" id="group" [(ngModel)]="selectedGroup">
-                    <option *ngFor="let group of groups" [(ngValue)]="group">{{ group.name }}</option>
+                    <option *ngFor="let group of groups"  [(ngValue)]="group.pk">{{ group.name }}</option>
                   </select>
             </div>
             <div class="form-group">
@@ -27,7 +27,8 @@
             </div>
 
             <div class="col text-center">
-                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-success" (click)="onAddChild()">Save</button>
+                <button class="btn btn-danger" (click)="onDelete()">Delete</button>
             </div>
         </form>
     </div>

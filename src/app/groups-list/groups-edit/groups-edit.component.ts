@@ -14,7 +14,6 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./groups-edit.component.css']
 })
 export class GroupsEditComponent implements OnInit {
-  // @ViewChild('f') gForm: NgForm;
   private group = new Group();
 
 

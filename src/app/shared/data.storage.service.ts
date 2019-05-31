@@ -45,6 +45,14 @@ export class DataStorageService {
     //     }
     // }
 
+    getChild(id: number): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/child/' + id);
+    }
+
+    getChildParent(childId: number): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/child-parent/' + childId);
+    }
+
     getFoodSleepList(date_param: string): Observable<Object> {
         return this.httpClient.get('http://localhost:8080/food-sleep/' + date_param);
     }
@@ -53,9 +61,17 @@ export class DataStorageService {
         return this.httpClient.get('http://localhost:8080/users');
     }
 
+    getUser(id: number): Observable<Object> {
+        return this.httpClient.get('http://localhost:8080/user/' + id);
+    }
+
     saveChild(child: ChildWrapper): Observable<ChildWrapper> {
         return this.httpClient.post<ChildWrapper>('http://localhost:8080/child', child, httpOptions)
 
+    }
+
+    deleteChild(id: number): Observable<Object> {
+        return this.httpClient.delete('http://localhost:8080/children/' + id)
     }
 
     saveGroup(group: Group): Observable<Group> {
@@ -70,6 +86,10 @@ export class DataStorageService {
     saveUser(user: User): Observable<User> {
         return this.httpClient.post<User>('http://localhost:8080/sendEmail', user, httpOptions)
 
+    }
+
+    deleteUser(id: number): Observable<Object> {
+        return this.httpClient.delete('http://localhost:8080/users/' + id)
     }
 
     addFoodData(food_entry: FoodEntry): Observable<FoodSleep> {

@@ -46,7 +46,6 @@ export class FoodSleepListComponent implements OnInit {
 
   }
 
-
   nextDate() {
     let newDate = this.date;
     newDate.setDate(newDate.getDate() + 1);

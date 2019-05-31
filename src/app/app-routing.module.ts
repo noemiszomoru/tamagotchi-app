@@ -61,6 +61,11 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: 'user/:id', component: UsersEditComponent, canActivate: [AuthGuard], children: [
+      // { path: ':id', component: GroupItemComponent }
+    ]
+  },
+  {
     path: 'users/new', component: UsersEditComponent, canActivate: [AuthGuard], children: [
       // { path: 'new', component: ChildrenListEditComponent },
 

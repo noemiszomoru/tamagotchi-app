@@ -5,7 +5,7 @@ export class User {
     public email: string;
     public username: string;
 
-    constructor(name: string, role: string, email: string, username: string) {
+    constructor(name: string = '', role: string = '', email: string = '', username: string = '') {
         this.name = name;
         this.role = role;
         this.email = email;

@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { TokenComponent } from './token/token.component';
+import { ParentViewComponent } from './parent-view/parent-view.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TokenComponent } from './token/token.component';
     LoginComponent,
     RegisterComponent,
     SetPasswordComponent,
-    TokenComponent
+    TokenComponent,
+    ParentViewComponent
   ],
   imports: [
     BrowserModule,

@@ -9,10 +9,11 @@
 <div class="spacer20"></div>
 <div class="container">
     <div class="col-xs-4">
-        <a href="#" class="list-group-item clearfix" *ngFor="let user of users">
-            <div class="pull-left">
-                <h5 class="list-group-item-heading">{{ user.name }} || {{ user.role }}</h5>
+        <div class="list-group" *ngFor="let user of users">
+            <div class="group-item">
+                <li class="list-group-item list-group-item-action">{{ user.name }} || {{ user.role }}</li>
+                <button routerLink="/user/{{ user.pk }}" type="button" class="edit-button btn btn-light btn-sm pull-right">&#x270F;</button>
             </div>
-        </a>
+        </div>
     </div>
 </div>
