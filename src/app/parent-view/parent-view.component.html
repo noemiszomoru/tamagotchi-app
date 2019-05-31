@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div routerLink="/food-sleep/{{ dateIdentifier }}" class="datePicker">
+            <i class="fa fa-chevron-circle-left" style="font-size:24px" (click)="previousDate()"></i>
+            <h5 class="dateHeader">{{ dateHeader }}</h5>
+            <i class="fa fa-chevron-circle-right" style="font-size:24px" (click)="nextDate()"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <app-food-sleep-item *ngFor="let item of food_sleep" [food_sleepEl]="item" [dateIdentifier]="dateIdentifier"></app-food-sleep-item>
+    </div>
+</div>
