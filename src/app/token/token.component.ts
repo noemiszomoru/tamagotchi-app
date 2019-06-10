@@ -13,7 +13,6 @@ export class TokenComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    console.log();
     this.route.paramMap.subscribe(
       (params: ParamMap) => {
         this.setToken(params.get('token'));
@@ -22,7 +21,7 @@ export class TokenComponent implements OnInit {
   }
 
   private setToken(token: string) {
-    console.log(`Token set tot ${token}`);
+    console.log(`Token set to ${token}`);
     localStorage.setItem(this.JWT_TOKEN, token);
     // localStorage.setItem(this.REFRESH_TOKEN, token.refreshToken);
     this.router.navigate(['set-password']);

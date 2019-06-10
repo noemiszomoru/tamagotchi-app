@@ -22,82 +22,94 @@ export class DataStorageService {
     constructor(private httpClient: HttpClient) { }
 
     getGroups(): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/groups');
+        return this.httpClient.get('http://192.168.2.12:8080/groups');
     }
 
     getGroup(id: number): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/group/' + id);
+        return this.httpClient.get('http://192.168.2.12:8080/group/' + id);
     }
 
     getChildren(groupId: number = 0): Observable<Object> {
         if (groupId) {
-            return this.httpClient.get('http://localhost:8080/children/' + groupId);
+            return this.httpClient.get('http://192.168.2.12:8080/children/' + groupId);
         } else {
-            return this.httpClient.get('http://localhost:8080/children');
+            return this.httpClient.get('http://192.168.2.12:8080/children');
         }
     }
 
     // getFoodSleepList(groupId: number = 0): Observable<Object> {
     //     if (groupId) {
-    //         return this.httpClient.get('http://localhost:8080/food-sleep/' + groupId);
+    //         return this.httpClient.get('http://192.168.2.12:8080/food-sleep/' + groupId);
     //     } else {
-    //         return this.httpClient.get('http://localhost:8080/food-sleep');
+    //         return this.httpClient.get('http://192.168.2.12:8080/food-sleep');
     //     }
     // }
 
     getChild(id: number): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/child/' + id);
+        return this.httpClient.get('http://192.168.2.12:8080/child/' + id);
     }
 
     getChildParent(childId: number): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/child-parent/' + childId);
+        return this.httpClient.get('http://192.168.2.12:8080/child-parent/' + childId);
     }
 
     getFoodSleepList(date_param: string): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/food-sleep/' + date_param);
+        return this.httpClient.get('http://192.168.2.12:8080/food-sleep/' + date_param);
     }
 
     getUsers(): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/users');
+        return this.httpClient.get('http://192.168.2.12:8080/users');
     }
 
     getUser(id: number): Observable<Object> {
-        return this.httpClient.get('http://localhost:8080/user/' + id);
+        return this.httpClient.get('http://192.168.2.12:8080/user/' + id);
+    }
+
+    getUserByUsername(username: string): Observable<Object> {
+        return this.httpClient.get('http://192.168.2.12:8080/user/' + username);
+    }
+
+    getUserRoles(): Observable<Object> {
+        return this.httpClient.get('http://192.168.2.12:8080/user-roles');
     }
 
     saveChild(child: ChildWrapper): Observable<ChildWrapper> {
-        return this.httpClient.post<ChildWrapper>('http://localhost:8080/child', child, httpOptions)
-
+        return this.httpClient.post<ChildWrapper>('http://192.168.2.12:8080/child', child, httpOptions)
     }
 
     deleteChild(id: number): Observable<Object> {
-        return this.httpClient.delete('http://localhost:8080/children/' + id)
+        return this.httpClient.delete('http://192.168.2.12:8080/children/' + id)
     }
 
     saveGroup(group: Group): Observable<Group> {
-        return this.httpClient.post<Group>('http://localhost:8080/group', group, httpOptions)
+        return this.httpClient.post<Group>('http://192.168.2.12:8080/group', group, httpOptions)
 
     }
 
     deleteGroup(id: number): Observable<Object> {
-        return this.httpClient.delete('http://localhost:8080/groups/' + id)
+        return this.httpClient.delete('http://192.168.2.12:8080/groups/' + id)
     }
 
     saveUser(user: User): Observable<User> {
-        return this.httpClient.post<User>('http://localhost:8080/sendEmail', user, httpOptions)
+        return this.httpClient.post<User>('http://192.168.2.12:8080/sendEmail', user, httpOptions)
+
+    }
+
+    updateUser(user: User): Observable<User> {
+        return this.httpClient.put<User>('http://192.168.2.12:8080/user', user, httpOptions)
 
     }
 
     deleteUser(id: number): Observable<Object> {
-        return this.httpClient.delete('http://localhost:8080/users/' + id)
+        return this.httpClient.delete('http://192.168.2.12:8080/users/' + id)
     }
 
     addFoodData(food_entry: FoodEntry): Observable<FoodSleep> {
-        return this.httpClient.post<FoodSleep>('http://localhost:8080/food', food_entry, httpOptions)
+        return this.httpClient.post<FoodSleep>('http://192.168.2.12:8080/food', food_entry, httpOptions)
     }
 
     addSleepData(sleep_entry: SleepEntry): Observable<FoodSleep> {
-        return this.httpClient.post<FoodSleep>('http://localhost:8080/sleep', sleep_entry, httpOptions)
+        return this.httpClient.post<FoodSleep>('http://192.168.2.12:8080/sleep', sleep_entry, httpOptions)
     }
 
 }

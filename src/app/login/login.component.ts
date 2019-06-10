@@ -23,11 +23,13 @@ export class LoginComponent implements OnInit {
         password: form.value.password
       }
     )
-      .subscribe(success => {
-        if (success) {
+      .subscribe(() => {
+        if (this.authService.userRole === 'parent') {
+          this.router.navigate(['/parent']);
+        } else if (this.authService.userRole === 'teacher') {
           this.router.navigate(['/food-sleep']);
-          console.log('merge?');
         }
+        console.log(this.authService.userRole);
       });
   }
 

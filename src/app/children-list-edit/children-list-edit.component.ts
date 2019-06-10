@@ -71,7 +71,12 @@ export class ChildrenListEditComponent implements OnInit {
 
   onAddChild(form: NgForm) {
 
-    const newChildWrapper = new ChildWrapper(new Child(this.child.name, this.selectedGroup));
+    const child = new Child(this.child.name, this.selectedGroup);
+    if (this.id) {
+      child.pk = this.id;
+    }
+
+    const newChildWrapper = new ChildWrapper(child);
     for (let parent of this.parents) {
       newChildWrapper.addParent(parent);
     }

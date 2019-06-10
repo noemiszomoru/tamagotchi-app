@@ -10,19 +10,12 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class SetPasswordComponent implements OnInit {
 
-
-
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   private token: string;
 
   ngOnInit() {
-
-    this.route.paramMap.subscribe(
-      (params: ParamMap) => {
-        this.token = params.get('token');
-      }
-    )
+    this.authService.getJwtToken();
     console.log(this.token);
   }
 
@@ -30,7 +23,8 @@ export class SetPasswordComponent implements OnInit {
     this.authService.setPassword(form.value.password)
       .subscribe(success => {
         if (success) {
-          this.router.navigate(['/food-sleep']);
+          console.log('asta merge?');
+          this.router.navigate(['/parent']);
         }
       });
   }

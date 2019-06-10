@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class UsersEditComponent implements OnInit {
   private users: User[] = [];
-  roles = ['admin', 'teacher', 'parent'];
+  roles = [];
   private user = new User();
   private selectedRole: string = '';
 
@@ -43,17 +43,45 @@ export class UsersEditComponent implements OnInit {
     )
     console.log(this.id);
 
+    this.dataStorageService.getUserRoles().subscribe((roles: []) => {
+      this.roles = roles;
+      console.log(this.roles);
+    });
+
     this.loadUser();
 
   }
 
   onAddUser(form: NgForm) {
-    const value = form.value;
-    const newUser = new User(value.name, value.role, value.email, value.username);
-    // this.groups.push(newGroup);
-    this.dataStorageService.saveUser(newUser).subscribe(() => {
-      this.router.navigate(['users']);
-    });
+
+    const user = new User(this.user.name, this.selectedRole, this.user.email, this.user.username);
+    if (this.id) {
+      this.user.pk = this.id;
+      this.dataStorageService.updateUser(this.user).subscribe(() => {
+        this.router.navigate(['users']);
+        console.log(this.user);
+      });
+    } else {
+      this.dataStorageService.saveUser(user).subscribe(() => {
+        this.router.navigate(['users']);
+        console.log(this.user);
+      });
+    }
+
+    // onAddUser(form: NgForm) {
+    //   this.dataStorageService.saveUser(this.user).subscribe(() => {
+    //     this.router.navigate(['users']);
+    //     console.log(this.user);
+    //   });
+
+
+    // onAddUser(form: NgForm) {
+    //   const value = form.value;
+    //   const newUser = new User(value.name, value.role, value.email, value.username);
+    //   // this.groups.push(newGroup);
+    //   this.dataStorageService.saveUser(newUser).subscribe(() => {
+    //     this.router.navigate(['users']);
+    //   });
 
   }
 

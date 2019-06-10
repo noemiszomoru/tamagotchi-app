@@ -6,6 +6,9 @@ import { Observable, of } from 'rxjs';
 import { Token } from '../../models/token';
 
 import * as jwt_decode from "jwt-decode";
+import { User } from 'src/app/models/user.model';
+import { DataStorageService } from 'src/app/shared/data.storage.service';
+import { userInfo } from 'os';
 
 @Injectable({
     providedIn: 'root'
@@ -16,13 +19,28 @@ export class AuthService {
     private readonly JWT_TOKEN = 'JWT_TOKEN';
     public readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
     private loggedUser: string;
-    private userId: number;
+    private _userId: number;
+    private _userRole: string;
+    private _userName: string;
+    // private user: User;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private dataStorageService: DataStorageService) { }
+
+    public get userId() {
+        return this._userId;
+    }
+
+    public get userName() {
+        return this._userName;
+    }
+
+    public get userRole() {
+        return this._userRole;
+    }
 
     register(user: { "name": string, "role": string, "email": string, "username": string, "password": string }): Observable<boolean> {
         console.log(user);
-        return this.http.post<any>('http://localhost:8080/register', user)
+        return this.http.post<any>('http://192.168.2.12:8080/register', user)
             .pipe(
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
@@ -34,7 +52,7 @@ export class AuthService {
     }
 
     setPassword(password: string): Observable<boolean> {
-        return this.http.post<any>('http://localhost:8080/setPassword/', {
+        return this.http.post<any>('http://192.168.2.12:8080/setPassword/', {
             id: this.userId,
             password: password
         })
@@ -52,7 +70,7 @@ export class AuthService {
 
     login(user: { "username": string, "password": string }): Observable<boolean> {
         console.log(user);
-        return this.http.post<any>('http://localhost:8080/login', user)
+        return this.http.post<any>('http://192.168.2.12:8080/login', user)
             .pipe(
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
@@ -65,7 +83,7 @@ export class AuthService {
 
     logout(refreshToken): Observable<Object> {
         refreshToken = this.getRefreshToken()
-        return this.http.delete<any>('http://localhost:8080/logout', refreshToken)
+        return this.http.delete<any>('http://192.168.2.12:8080/logout', refreshToken)
             .pipe(
                 tap(() => this.doLogoutUser()),
                 mapTo(true),
@@ -79,8 +97,30 @@ export class AuthService {
         return !!this.getJwtToken();
     }
 
+    // isParent() {
+    //     this.dataStorageService.getUserByUsername(this.loggedUser).subscribe((user: User) => {
+    //         this.user = user;
+    //     });
+    //     if (this.user.role === 'parent') {
+    //         return !!this.isParent();
+    //     }
+    // }
+
+    // userParent() {
+
+    // }
+
+    // isTeacher() {
+    //     this.dataStorageService.getUserByUsername(this.loggedUser).subscribe((user: User) => {
+    //         this.user = user;
+    //     });
+    //     if (this.user.role === 'teacher') {
+    //         return !!this.isTeacher();
+    //     }
+    // }
+
     doRefreshToken() {
-        return this.http.post<any>('http://localhost:8080/refresh', {
+        return this.http.post<any>('http://192.168.2.12:8080/refresh', {
             'refreshToken': this.getJwtToken()
         }).pipe(tap((tokens: Token) => {
             this.storeJwtToken(tokens.accessToken);
@@ -91,7 +131,9 @@ export class AuthService {
         const token = localStorage.getItem(this.JWT_TOKEN);
         if (token) {
             const tokenPayload = jwt_decode(token);
-            this.userId = tokenPayload.id;
+            this._userId = tokenPayload.id;
+            this._userName = tokenPayload.name;
+            this._userRole = tokenPayload.role;
         }
         return token;
     }

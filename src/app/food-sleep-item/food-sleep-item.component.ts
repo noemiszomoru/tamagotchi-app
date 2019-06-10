@@ -33,7 +33,7 @@ export class FoodSleepItemComponent implements OnInit {
     if (value == null) {
 
       this.start.time = {
-        hour: 12,
+        hour: 13,
         minute: 0
       }
 
@@ -51,7 +51,7 @@ export class FoodSleepItemComponent implements OnInit {
     if (value == null) {
 
       this.end.time = {
-        hour: 12,
+        hour: 17,
         minute: 0
       }
 

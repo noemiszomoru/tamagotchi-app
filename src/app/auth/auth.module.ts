@@ -8,12 +8,13 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 // import { RandomGuard } from './guards/random.guard';
 import { TokenInterceptor } from './token.interceptor';
+import { RoleGuard } from './guards/role.guard';
 
 @NgModule({
     providers: [
         AuthGuard,
         AuthService,
-        // RandomGuard,
+        RoleGuard,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

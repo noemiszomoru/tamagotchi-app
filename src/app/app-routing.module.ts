@@ -14,65 +14,67 @@ import { RegisterComponent } from './register/register.component';
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { TokenComponent } from './token/token.component';
+import { ParentViewComponent } from './parent-view/parent-view.component';
+import { RoleGuard } from './auth/guards/role.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'group/:id', component: GroupsEditComponent, canActivate: [AuthGuard], children: [
+    path: 'group/:id', component: GroupsEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'groups/new', component: GroupsEditComponent, canActivate: [AuthGuard], children: [
+    path: 'groups/new', component: GroupsEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupItemComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'groups', component: GroupsListComponent, canActivate: [AuthGuard], children: [
+    path: 'groups', component: GroupsListComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupsEditComponent }
       // { path: 'new', component: GroupsListEditComponent }
     ]
   },
   {
-    path: 'child/:id', component: ChildrenListEditComponent, canActivate: [AuthGuard], children: [
+    path: 'child/:id', component: ChildrenListEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupItemComponent }
     ]
   },
   {
-    path: 'children/new', component: ChildrenListEditComponent, canActivate: [AuthGuard], children: [
+    path: 'children/new', component: ChildrenListEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupItemComponent }
     ]
   },
   {
-    path: 'children', component: ChildrenListComponent, canActivate: [AuthGuard], children: [
+    path: 'children', component: ChildrenListComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: 'new', component: ChildrenListEditComponent },
       { path: ':groupId', component: ChildrenListComponent }
 
     ]
   },
   {
-    path: 'users', component: UsersComponent, canActivate: [AuthGuard], children: [
+    path: 'users', component: UsersComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: 'new', component: ChildrenListEditComponent },
 
     ]
   },
   {
-    path: 'user/:id', component: UsersEditComponent, canActivate: [AuthGuard], children: [
+    path: 'user/:id', component: UsersEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: ':id', component: GroupItemComponent }
     ]
   },
   {
-    path: 'users/new', component: UsersEditComponent, canActivate: [AuthGuard], children: [
+    path: 'users/new', component: UsersEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       // { path: 'new', component: ChildrenListEditComponent },
 
     ]
   },
   {
-    path: 'food-sleep', component: FoodSleepListComponent, canActivate: [AuthGuard], children: [
+    path: 'food-sleep', component: FoodSleepListComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
       { path: ':date', component: FoodSleepListComponent }
 
     ]
@@ -81,7 +83,13 @@ const appRoutes: Routes = [
     path: 'token/:token', component: TokenComponent,
   },
   {
-    path: 'set-password', component: SetPasswordComponent, canActivate: [AuthGuard],
+    path: 'set-password', component: SetPasswordComponent,
+  },
+  {
+    path: 'parent', component: ParentViewComponent, canActivate: [RoleGuard], data: { expectedRole: 'parent' }, children: [
+      // { path: ':id', component: GroupItemComponent }
+      // { path: 'new', component: GroupsListEditComponent }
+    ]
   },
 
 ];

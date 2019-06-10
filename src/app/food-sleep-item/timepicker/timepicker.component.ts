@@ -25,8 +25,8 @@ export class TimepickerComponent implements OnInit {
   public dragTime;
   private dragStep = 1;
   private timepicker = null;
-  private min = 8 * 60;
-  private max = 21 * 60;
+  private min = 13 * 60;
+  private max = 17 * 60;
 
   formattedTime = '13:00';
 

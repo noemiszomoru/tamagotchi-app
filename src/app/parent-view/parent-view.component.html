@@ -10,6 +10,41 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <app-food-sleep-item *ngFor="let item of food_sleep" [food_sleepEl]="item" [dateIdentifier]="dateIdentifier"></app-food-sleep-item>
+        <div class="list-group-item clearfix">
+            <div class="list-group-item-heading" *ngFor="let item of food_sleep">
+                <ul class="list-inline">
+                    <li>{{ item.name }}</li>
+                    <!-- <li>{{ item.breakfast }}</li> -->
+                    <figure class="figure">
+                        <img *ngIf="item.breakfast === 1" src={{images[0]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.breakfast === 0" src={{images[2]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.breakfast === 0.5" src={{images[1]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.breakfast === null" src={{images[3]}} class="figure-img img-fluid rounded">
+                        <figcaption class="figure-caption">Breakfast</figcaption>
+                    </figure>
+                    <figure class="figure">
+                        <img *ngIf="item.soup === 1" src={{images[0]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.soup === 0" src={{images[2]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.soup === 0.5" src={{images[1]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.soup === null" src={{images[3]}} class="figure-img img-fluid rounded">
+                        <figcaption class="figure-caption">Soup</figcaption>
+                    </figure>
+                    <figure class="figure">
+                        <img *ngIf="item.main_dish === 1" src={{images[0]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.main_dish === 0" src={{images[2]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.main_dish === 0.5" src={{images[1]}} class="figure-img img-fluid rounded">
+                        <img *ngIf="item.main_dish === null" src={{images[3]}} class="figure-img img-fluid rounded">
+                        <figcaption class="figure-caption">Main Dish</figcaption>
+                    </figure>
+                    <figure class="figure-sleep">
+                        <img src='../assets/sleep.png' class="figure-sleep img-fluid rounded">
+                        <figcaption class="figure-caption">{{ item.sleepDuration }}</figcaption>
+                        <!-- <hr> -->
+                        <!-- <figcaption class="figure-caption">{{ item.sleepStartTime }} - {{ item.sleepEndTime }}</figcaption> -->
+                    </figure>
+                    <hr>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

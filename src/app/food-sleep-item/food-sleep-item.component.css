@@ -7,3 +7,7 @@
 .food-sleep-item {
     display: inline-block;
 }
+
+p {
+    font-weight: 500;
+}
