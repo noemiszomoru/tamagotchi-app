@@ -109,15 +109,25 @@ export class FoodSleepItemComponent implements OnInit {
     this.displayBrImage(this.food_sleepEl.breakfast);
     this.displaySoupImage(this.food_sleepEl.soup);
     this.displayMdImage(this.food_sleepEl.main_dish);
-
   }
 
-  onTimeMove() {
+  ngOnDestroy() {
+    window.removeEventListener('mouseup', this.onTimeMove);
+    window.removeEventListener('touchend', this.onTimeMove);
+  }
+
+  onTimeMove = () => {
+
     const sleep_entry = new SleepEntry(this.food_sleepEl.pk, this.dateIdentifier, this.start.dragTime, this.end.dragTime);
     this.dataStorageService.addSleepData(sleep_entry).subscribe(() => {
       this.router.navigate(['food-sleep']);
     });
     console.log(sleep_entry);
+  }
+
+  monitorDragEnd() {
+    window.addEventListener('mouseup', this.onTimeMove);
+    window.addEventListener('touchend', this.onTimeMove);
   }
 
   onFoodClick() {

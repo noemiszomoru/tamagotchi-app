@@ -7,12 +7,16 @@
                 <!-- <img id="sleep" src="../assets/sleep.png" class="img-fluid"> -->
                 <div class="sleep">
                     <p>Start
-                        <app-timepicker #start [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier" (touchend)="onTimeMove()"></app-timepicker>
+                        <app-timepicker #start [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier"
+                            (mousedown)="monitorDragEnd()">
+                        </app-timepicker>
                     </p>
 
                     <hr>
                     <p>End
-                        <app-timepicker #end [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier" (touchend)="onTimeMove()"></app-timepicker>
+                        <app-timepicker #end [food_sleepEl]="food_sleepEl" [dateIdentifier]="dateIdentifier"
+                            (mousedown)="monitorDragEnd()">
+                        </app-timepicker>
                     </p>
                 </div>
 

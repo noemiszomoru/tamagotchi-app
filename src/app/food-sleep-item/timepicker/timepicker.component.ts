@@ -28,6 +28,8 @@ export class TimepickerComponent implements OnInit {
   private min = 13 * 60;
   private max = 17 * 60;
 
+  private mouseMode = false;
+
   formattedTime = '13:00';
 
 
@@ -42,13 +44,31 @@ export class TimepickerComponent implements OnInit {
     // ev.stopPropagation();
     // ev.preventDefault();
 
+    // We check here if this is an event from mouse or from touch
+    if (ev.pageX) {
+      this.mouseMode = true;
+    } else {
+      this.mouseMode = false;
+    }
+
     window.removeEventListener('touchmove', this.mouseMove);
     window.removeEventListener('touchend', this.mouseUp);
 
     window.addEventListener('touchmove', this.mouseMove);
     window.addEventListener('touchend', this.mouseUp);
 
-    this.startOffset = ev.changedTouches[0].clientX;
+    window.removeEventListener('mousemove', this.mouseMove);
+    window.removeEventListener('mouseup', this.mouseUp);
+
+    window.addEventListener('mousemove', this.mouseMove);
+    window.addEventListener('mouseup', this.mouseUp);
+
+    if (this.mouseMode) {
+      this.startOffset = ev.pageX;
+    } else {
+      this.startOffset = ev.changedTouches[0].clientX;
+
+    }
     this.startTime = this.time.hour * 60 + this.time.minute;
 
     console.log(this.startTime);
@@ -56,7 +76,12 @@ export class TimepickerComponent implements OnInit {
 
   mouseMove = (ev) => {
     console.log(ev);
-    this.dragTime = Math.round((this.startTime + (ev.changedTouches[0].clientX - this.startOffset) / this.dragStep) / 15) * 15;
+    if (this.mouseMode) {
+      this.dragTime = Math.round((this.startTime + (ev.pageX - this.startOffset) / this.dragStep) / 15) * 15;
+    } else {
+      this.dragTime = Math.round((this.startTime + (ev.changedTouches[0].clientX - this.startOffset) / this.dragStep) / 15) * 15;
+    }
+
 
     console.log(this.dragTime);
 
@@ -74,6 +99,9 @@ export class TimepickerComponent implements OnInit {
     console.log('up');
     window.removeEventListener('touchmove', this.mouseMove);
     window.removeEventListener('touchend', this.mouseUp);
+
+    window.removeEventListener('mousemove', this.mouseMove);
+    window.removeEventListener('mousetouchend', this.mouseUp);
     // this.onTimeMove();
   }
 

@@ -1,1 +1,2 @@
-<div id="timepicker" class="timepicker" (touchstart)="mouseDown($event)">{{formattedTime}}</div>
+<div id="timepicker" class="timepicker noselect" (touchstart)="mouseDown($event)" (mousedown)="mouseDown($event)">
+    {{formattedTime}}</div>
