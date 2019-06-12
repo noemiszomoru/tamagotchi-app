@@ -4,6 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
+        "live": "ng serve --host 0.0.0.0 --public-host tamagotchi.freejack.ro",
         "start-all": "ng serve --host 0.0.0.0",
         "build": "ng build",
         "test": "ng test",
