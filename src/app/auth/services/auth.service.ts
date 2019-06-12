@@ -8,8 +8,8 @@ import { Token } from '../../models/token';
 import * as jwt_decode from "jwt-decode";
 import { User } from 'src/app/models/user.model';
 import { DataStorageService } from 'src/app/shared/data.storage.service';
-import { userInfo } from 'os';
 import { Router } from '@angular/router';
+import { Config } from 'src/Config';
 
 @Injectable({
     providedIn: 'root'
@@ -41,7 +41,7 @@ export class AuthService {
 
     register(user: { "name": string, "role": string, "email": string, "username": string, "password": string }): Observable<boolean> {
         console.log(user);
-        return this.http.post<any>('http://192.168.2.12:8080/register', user)
+        return this.http.post<any>(Config.serverUrl + '/register', user)
             .pipe(
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
@@ -53,7 +53,7 @@ export class AuthService {
     }
 
     setPassword(password: string): Observable<boolean> {
-        return this.http.post<any>('http://192.168.2.12:8080/setPassword/', {
+        return this.http.post<any>(Config.serverUrl + '/setPassword/', {
             id: this.userId,
             password: password
         })
@@ -71,7 +71,7 @@ export class AuthService {
 
     login(user: { "username": string, "password": string }): Observable<boolean> {
         console.log(user);
-        return this.http.post<any>('http://192.168.2.12:8080/login', user)
+        return this.http.post<any>(Config.serverUrl + '/login', user)
             .pipe(
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
@@ -85,7 +85,7 @@ export class AuthService {
 
     logout(refreshToken): Observable<Object> {
         refreshToken = this.getRefreshToken()
-        return this.http.delete<any>('http://192.168.2.12:8080/logout', refreshToken)
+        return this.http.delete<any>(Config.serverUrl + '/logout', refreshToken)
             .pipe(
                 tap(() => this.doLogoutUser()),
                 mapTo(true),
@@ -122,7 +122,7 @@ export class AuthService {
     // }
 
     doRefreshToken() {
-        return this.http.post<any>('http://192.168.2.12:8080/refresh', {
+        return this.http.post<any>(Config.serverUrl + '/refresh', {
             'refreshToken': this.getJwtToken()
         }).pipe(tap((tokens: Token) => {
             this.storeJwtToken(tokens.accessToken);
