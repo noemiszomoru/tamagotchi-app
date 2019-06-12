@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+body {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .row {
     width: 100%;
     margin: 0;
@@ -22,8 +28,7 @@
     height: 30px;
 }
 
-h4,
-h6 {
+h4, h6 {
     float: left;
 }
 

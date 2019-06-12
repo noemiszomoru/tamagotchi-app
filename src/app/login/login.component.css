@@ -6,11 +6,13 @@
 
 .container {
     background: #fff;
+    margin: 0 auto;
 }
 
 .login-sec {
     padding: 50px 30px;
     position: relative;
+    margin: 0 auto;
 }
 
 .login-sec .copy-text {
