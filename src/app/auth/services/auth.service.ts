@@ -9,6 +9,7 @@ import * as jwt_decode from "jwt-decode";
 import { User } from 'src/app/models/user.model';
 import { DataStorageService } from 'src/app/shared/data.storage.service';
 import { userInfo } from 'os';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,7 @@ export class AuthService {
     private _userName: string;
     // private user: User;
 
-    constructor(private http: HttpClient, private dataStorageService: DataStorageService) { }
+    constructor(private http: HttpClient, private dataStorageService: DataStorageService, private router: Router) { }
 
     public get userId() {
         return this._userId;
@@ -78,6 +79,7 @@ export class AuthService {
                     alert(JSON.stringify(error));
                     return of(false);
                 }));
+
 
     }
 
@@ -141,6 +143,7 @@ export class AuthService {
     private doLoginUser(username: string, tokens: Token) {
         this.loggedUser = username;
         this.storeToken(tokens);
+        this.getJwtToken();
     }
 
     private doLogoutUser() {

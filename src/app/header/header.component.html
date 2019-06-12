@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/groups">Groups<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/groups" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Groups<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/children">Children<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/children" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Children<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/users">Users<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/users" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Users<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/food-sleep">Food & Sleep<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/food-sleep" *ngIf="authService.isLoggedIn()">Food & Sleep<span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -24,9 +24,9 @@
                 <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
                     <a class="nav-link" routerLink="/login">Log In<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <!-- <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
                     <a class="nav-link" routerLink="/register">Register<span class="sr-only">(current)</span></a>
-                </li>
+                </li> -->
             </ng-template>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <a class="nav-link" style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isLoggedIn()">Log Out</a></li>
