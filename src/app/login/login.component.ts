@@ -14,6 +14,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+    var flip = 1;
+    setInterval(function () {
+      var logo = document.getElementById('logo');
+      if (!logo) return;
+      flip = flip * -1;
+      logo.setAttribute('style', 'transform: scaleX(' + flip + '); ');
+    }, 250);
+
+
   }
 
   onLogin(form: NgForm) {
