@@ -8,6 +8,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
 import { switchMap, filter } from 'rxjs/operators';
+import { Group } from '../models/group.model';
 
 @Component({
   selector: 'app-food-sleep-list',
@@ -15,17 +16,27 @@ import { switchMap, filter } from 'rxjs/operators';
   styleUrls: ['./food-sleep-list.component.css']
 })
 export class FoodSleepListComponent implements OnInit {
+  private groups: Group[] = [];
+  private selectedGroup: number = null;
   private food_sleep: FoodSleep[] = [];
   food_sleep$: Observable<any>;
   date: Date;
   dateHeader: string;
   dateIdentifier: string;
 
-  constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) {
+
+    this.dataStorageService.getGroups().subscribe((groups: Group[]) => {
+      this.groups = groups;
+    });
+
+  }
 
   // public groupId: number;
   public date_param: string;
   private routerNavigationMonitor: Subscription;
+
+
 
   public loadList() {
 

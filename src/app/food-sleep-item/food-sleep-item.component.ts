@@ -102,7 +102,6 @@ export class FoodSleepItemComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.displayStartTime(this.food_sleepEl.start_at);
     this.displayEndTime(this.food_sleepEl.end_at);
 
@@ -117,17 +116,23 @@ export class FoodSleepItemComponent implements OnInit {
   }
 
   onTimeMove = () => {
+    window.removeEventListener('mouseup', this.onTimeMove);
+    window.removeEventListener('touchend', this.onTimeMove);
 
-    const sleep_entry = new SleepEntry(this.food_sleepEl.pk, this.dateIdentifier, this.start.dragTime, this.end.dragTime);
-    this.dataStorageService.addSleepData(sleep_entry).subscribe(() => {
-      this.router.navigate(['food-sleep']);
-    });
-    console.log(sleep_entry);
+    this.dispatchTimeChange();
   }
 
-  monitorDragEnd() {
+  monitorTimeDrag() {
     window.addEventListener('mouseup', this.onTimeMove);
     window.addEventListener('touchend', this.onTimeMove);
+  }
+
+  dispatchTimeChange() {
+    const sleep_entry = new SleepEntry(this.food_sleepEl.pk, this.dateIdentifier, this.start.dragTime, this.end.dragTime);
+    this.dataStorageService.addSleepData(sleep_entry).subscribe(() => {
+      // this.router.navigate(['food-sleep']);
+    });
+    console.log(sleep_entry);
   }
 
   onFoodClick() {
