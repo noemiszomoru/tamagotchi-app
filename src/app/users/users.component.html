@@ -11,7 +11,7 @@
     <div class="col-xs-4">
         <div class="list-group" *ngFor="let user of users">
             <div class="group-item">
-                <li class="list-group-item list-group-item-action">{{ user.name }} || {{ user.role }}</li>
+                <li class="list-group-item list-group-item-action">{{ user.name }} <span class="badge badge-light">{{ user.role | titlecase }}</span></li>
                 <button routerLink="/user/{{ user.pk }}" type="button" class="edit-button btn btn-light btn-sm pull-right">&#x270F;</button>
             </div>
         </div>

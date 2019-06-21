@@ -9,3 +9,8 @@
 .edit-button {
     width: 15px;
 }
+
+.badge {
+    margin: 3px 10px 0 20px;
+    float: right;
+}
