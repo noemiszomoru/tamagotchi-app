@@ -4,7 +4,7 @@ import { formatDate } from '@angular/common';
 import { FoodSleep } from '../models/food-sleep.model';
 import { DataStorageService } from '../shared/data.storage.service';
 
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, ParamMap } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
 import { switchMap, filter } from 'rxjs/operators';
@@ -28,6 +28,7 @@ export class FoodSleepListComponent implements OnInit {
 
     this.dataStorageService.getGroups().subscribe((groups: Group[]) => {
       this.groups = groups;
+      console.log(this.groups);
     });
 
   }
@@ -96,6 +97,36 @@ export class FoodSleepListComponent implements OnInit {
     this.date = date;
     this.dateHeader = this.formatDateHeader(this.date);
     this.dateIdentifier = this.formatDateIdentifier(this.date);
+  }
+
+  onTeiClick() {
+    // this.groups[0].pk
+    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[2].pk).subscribe((food_sleep: FoodSleep[]) => {
+      this.food_sleep = food_sleep;
+      console.log(this.dateIdentifier);
+      console.log(this.food_sleep);
+      console.log(`Records loaded ... OK`);
+    });
+  }
+
+  onFrasinClick() {
+    // this.groups[0].pk
+    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[0].pk).subscribe((food_sleep: FoodSleep[]) => {
+      this.food_sleep = food_sleep;
+      console.log(this.dateIdentifier);
+      console.log(this.food_sleep);
+      console.log(`Records loaded ... OK`);
+    });
+  }
+
+  onStejarClick() {
+    // this.groups[0].pk
+    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[1].pk).subscribe((food_sleep: FoodSleep[]) => {
+      this.food_sleep = food_sleep;
+      console.log(this.dateIdentifier);
+      console.log(this.food_sleep);
+      console.log(`Records loaded ... OK`);
+    });
   }
 
   ngOnInit() {

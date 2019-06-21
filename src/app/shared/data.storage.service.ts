@@ -54,8 +54,12 @@ export class DataStorageService {
         return this.httpClient.get(Config.serverUrl + '/child-parent/' + childId);
     }
 
-    getFoodSleepList(date_param: string): Observable<Object> {
-        return this.httpClient.get(Config.serverUrl + '/food-sleep/' + date_param);
+    getFoodSleepList(date_param: string, group_param?: number): Observable<Object> {
+        if (group_param) {
+            return this.httpClient.get(Config.serverUrl + '/food-sleep/' + date_param + '?group=' + group_param);
+        } else {
+            return this.httpClient.get(Config.serverUrl + '/food-sleep/' + date_param);
+        }
     }
 
     getUsers(): Observable<Object> {

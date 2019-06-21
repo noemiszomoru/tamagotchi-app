@@ -8,3 +8,20 @@ h5 {
     display: inline-block;
     padding: 20px;
 }
+
+img {
+    width: 12%;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.img-section {
+    width: 100%;
+    text-align: center;
+}
+
+.img-circle {
+    border-radius: 50%;
+}

@@ -13,12 +13,15 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <label for="group">Filter by Group</label>
+<div class="row img-section">
+    <div class="col-sm-12 ">
+        <img src='../assets/tei.png' class="img-circle" (click)="onTeiClick()">
+        <img src='../assets/frasin.png' class="img-circle" (click)="onFrasinClick()">
+        <img src='../assets/stejar.png' class="img-circle" (click)="onStejarClick()">
+        <!-- <label for="group">Filter by Group</label>
         <select name="group" id="group" [(ngModel)]="selectedGroup">
             <option *ngFor="let group of groups"  [(ngValue)]="group.pk">{{ group.name }}</option>
-        </select>
+        </select> -->
     </div>
 </div>
 
