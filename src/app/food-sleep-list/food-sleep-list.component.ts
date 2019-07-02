@@ -17,6 +17,7 @@ import { Group } from '../models/group.model';
 })
 export class FoodSleepListComponent implements OnInit {
   private groups: Group[] = [];
+  private group: Group;
   private selectedGroup: number = null;
   private food_sleep: FoodSleep[] = [];
   food_sleep$: Observable<any>;
@@ -36,8 +37,6 @@ export class FoodSleepListComponent implements OnInit {
   // public groupId: number;
   public date_param: string;
   private routerNavigationMonitor: Subscription;
-
-
 
   public loadList() {
 
@@ -99,35 +98,42 @@ export class FoodSleepListComponent implements OnInit {
     this.dateIdentifier = this.formatDateIdentifier(this.date);
   }
 
-  onTeiClick() {
-    // this.groups[0].pk
-    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[2].pk).subscribe((food_sleep: FoodSleep[]) => {
-      this.food_sleep = food_sleep;
-      console.log(this.dateIdentifier);
-      console.log(this.food_sleep);
-      console.log(`Records loaded ... OK`);
-    });
-  }
+  //   this.dataStorageService.getFoodSleepList(this.dateIdentifier, group.pk).subscribe((food_sleep: FoodSleep[]) => {
+  //     this.food_sleep = food_sleep;
+  //     console.log(this.dateIdentifier);
+  //     console.log(this.food_sleep);
+  //     console.log(`Records loaded ... OK`);
+  //   });
+  // }
 
-  onFrasinClick() {
-    // this.groups[0].pk
-    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[0].pk).subscribe((food_sleep: FoodSleep[]) => {
-      this.food_sleep = food_sleep;
-      console.log(this.dateIdentifier);
-      console.log(this.food_sleep);
-      console.log(`Records loaded ... OK`);
-    });
-  }
 
-  onStejarClick() {
-    // this.groups[0].pk
-    this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[1].pk).subscribe((food_sleep: FoodSleep[]) => {
-      this.food_sleep = food_sleep;
-      console.log(this.dateIdentifier);
-      console.log(this.food_sleep);
-      console.log(`Records loaded ... OK`);
-    });
-  }
+  //   }
+  //   this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.group).subscribe((food_sleep: FoodSleep[]) => {
+  //     this.food_sleep = food_sleep;
+  //     console.log(this.dateIdentifier);
+  //     console.log(this.food_sleep);
+  //     console.log(`Records loaded ... OK`);
+  //   });
+  // }
+
+  // onFrasinClick() {
+  //   // this.groups[0].pk
+  //   this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[0].pk).subscribe((food_sleep: FoodSleep[]) => {
+  //     this.food_sleep = food_sleep;
+  //     console.log(this.dateIdentifier);
+  //     console.log(this.food_sleep);
+  //     console.log(`Records loaded ... OK`);
+  //   });
+  // }
+
+  // onStejarClick() {
+  //   // this.groups[0].pk
+  //   this.dataStorageService.getFoodSleepList(this.dateIdentifier, this.groups[1].pk).subscribe((food_sleep: FoodSleep[]) => {
+  //     this.food_sleep = food_sleep;
+  //     console.log(this.dateIdentifier);
+  //     console.log(this.food_sleep);
+  //     console.log(`Records loaded ... OK`);
+  //   });
 
   ngOnInit() {
     this.updateDate(new Date());
@@ -149,7 +155,7 @@ export class FoodSleepListComponent implements OnInit {
       console.log('...');
       let date_param = this.route.firstChild.snapshot.params.date;
       if (date_param != 'today') {
-        var dateParts = date_param.split('-');
+        var dateParts = date_param.split('-', '?');
         console.log(dateParts);
         if (dateParts.length == 3) {
           this.updateDate(new Date(`${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`));
@@ -160,6 +166,16 @@ export class FoodSleepListComponent implements OnInit {
 
     //This is how you read the parameter value from the route child 
     this.loadList();
+  }
+
+  onGroupClick(ev: Event) {
+    if (ev.currentTarget instanceof HTMLElement) {
+      const groupPk = parseInt(ev.currentTarget.getAttribute('data-group'));
+      this.dataStorageService.getFoodSleepList(this.dateIdentifier, groupPk).subscribe((food_sleep: FoodSleep[]) => {
+        this.food_sleep = food_sleep;
+      });
+
+    }
   }
 
 

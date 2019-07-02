@@ -75,6 +75,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'food-sleep', component: FoodSleepListComponent, canActivate: [RoleGuard], data: { expectedRole: 'teacher' }, children: [
+      { path: ':date/:group', component: FoodSleepListComponent },
       { path: ':date', component: FoodSleepListComponent }
 
     ]
