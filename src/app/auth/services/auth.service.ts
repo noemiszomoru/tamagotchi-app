@@ -84,10 +84,12 @@ export class AuthService {
     }
 
     logout(refreshToken): Observable<Object> {
-        refreshToken = this.getRefreshToken()
+        refreshToken = this.getRefreshToken();
+        this.doLogoutUser();
+
         return this.http.delete<any>(Config.serverUrl + '/logout', refreshToken)
             .pipe(
-                tap(() => this.doLogoutUser()),
+                tap(() => { }),
                 mapTo(true),
                 catchError(error => {
                     alert(JSON.stringify(error));
