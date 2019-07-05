@@ -22,9 +22,15 @@ export class SetPasswordComponent implements OnInit {
   onSetPassword(form: NgForm) {
     this.authService.setPassword(form.value.password)
       .subscribe(success => {
-        if (success) {
+        if (success && (this.authService.userRole === 'parent')) {
           console.log('asta merge?');
           this.router.navigate(['/parent']);
+        }
+        else if (success && (this.authService.userRole === 'teacher')) {
+          this.router.navigate(['/food-sleep']);
+        }
+        else if (success && (this.authService.userRole === 'admin')) {
+          this.router.navigate(['/food-sleep']);
         }
       });
   }
