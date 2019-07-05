@@ -13,6 +13,14 @@ export class RoleGuard implements CanActivate {
         // on the data property
         const expectedRole = route.data.expectedRole;
 
+        if (this.authService.userRole === 'admin') {
+            return true;
+        }
+
+        if (Array.isArray(expectedRole)) {
+            return expectedRole.indexOf(this.authService.userRole) !== -1;
+        }
+
         return expectedRole === this.authService.userRole;
 
         const token = localStorage.getItem('JWT_TOKEN');

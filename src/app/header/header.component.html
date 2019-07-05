@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/groups" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Groups<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/groups" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher' || authService.userRole === 'admin'">Groups<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/children" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Children<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/children" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher' || authService.userRole === 'admin'">Children<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" routerLink="/users" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher'">Users<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/users" *ngIf="authService.isLoggedIn() && authService.userRole === 'teacher' || authService.userRole === 'admin'">Users<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <a class="nav-link" routerLink="/food-sleep" *ngIf="authService.isLoggedIn()">Food & Sleep<span class="sr-only">(current)</span></a>

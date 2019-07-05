@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
         } else if (this.authService.userRole === 'teacher') {
           this.router.navigate(['/food-sleep']);
         }
+        else if (this.authService.userRole === 'admin') {
+          this.router.navigate(['/groups']);
+        }
         console.log(this.authService.userRole);
       });
   }
