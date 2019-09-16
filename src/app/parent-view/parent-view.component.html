@@ -37,7 +37,10 @@
                         <figcaption class="figure-caption">Main Dish</figcaption>
                     </figure>
                     <figure class="figure-sleep">
-                        <img src='../assets/sleep.png' class="figure-sleep img-fluid rounded">
+                        <img *ngIf="item.sleepDuration > 0" src='../assets/sleep.png'
+                            class="figure-sleep img-fluid rounded">
+                        <img *ngIf="!item.sleepDuration" src='../assets/sleep-null.png'
+                            class="figure-sleep img-fluid rounded">
                         <figcaption class="figure-caption">{{ item.sleepDuration }}</figcaption>
                         <!-- <hr> -->
                         <!-- <figcaption class="figure-caption">{{ item.sleepStartTime }} - {{ item.sleepEndTime }}</figcaption> -->

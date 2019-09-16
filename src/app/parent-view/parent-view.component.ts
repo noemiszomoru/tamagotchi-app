@@ -84,7 +84,7 @@ export class ParentViewComponent implements OnInit {
   }
 
   private formatDateHeader(date: Date): string {
-    return formatDate(date, 'EEEE, d\'th\' of MMMM, y', 'en');
+    return formatDate(date, 'EEE, d\'th\' of MMM', 'en');
   }
 
   private formatDateIdentifier(date: Date): string {
