@@ -1,11 +1,11 @@
 .group-item {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .list-group-item {
-    width: 95%;
+  width: 95%;
 }
 
 .edit-button {
-    width: 30px;
+  width: 50px;
 }
