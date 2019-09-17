@@ -71,7 +71,7 @@ export class TimepickerComponent implements OnInit {
     }
     this.startTime = this.time.hour * 60 + this.time.minute;
 
-    console.log(this.startTime);
+    // console.log(this.startTime);
   }
 
   mouseMove = (ev) => {
@@ -83,7 +83,7 @@ export class TimepickerComponent implements OnInit {
     }
 
 
-    console.log(this.dragTime);
+    // console.log(this.dragTime);
 
     this.dragTime = Math.min(Math.max(this.dragTime, this.min), this.max);
 
