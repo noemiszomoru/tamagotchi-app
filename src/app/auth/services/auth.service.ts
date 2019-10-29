@@ -76,7 +76,11 @@ export class AuthService {
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
                 catchError(error => {
-                    alert(JSON.stringify(error));
+                    if (error.error) {
+                        alert(error.error);
+                    } else {
+                        alert(JSON.stringify(error));
+                    }
                     return of(false);
                 }));
 
