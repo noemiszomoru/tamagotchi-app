@@ -83,8 +83,6 @@ export class TimepickerComponent implements OnInit {
     }
 
 
-    // console.log(this.dragTime);
-
     this.dragTime = Math.min(Math.max(this.dragTime, this.min), this.max);
 
     this.time = {
@@ -116,6 +114,7 @@ export class TimepickerComponent implements OnInit {
   updateComponent() {
     //this.timepicker.innerHTML = this.time.hour + ':' + this.time.minute;
     this.formattedTime = this.pad(this.time.hour, '0', 2) + ':' + this.pad(this.time.minute, '0', 2);
+    this.dragTime = this.time.hour * 60 + this.time.minute;
   }
 
   // onTimeMove() {
