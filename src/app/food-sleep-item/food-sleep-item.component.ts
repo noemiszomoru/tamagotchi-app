@@ -22,10 +22,10 @@ export class FoodSleepItemComponent implements OnInit {
   image_br = '../assets/food.png';
   image_soup = '../assets/food.png';
   image_md = '../assets/food.png';
-  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png'];
-  breakfast_values = [0, 0.5, 1];
-  soup_values = [0, 0.5, 1];
-  main_dish_values = [0, 0.5, 1];
+  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png', '../assets/food2.png'];
+  breakfast_values = [0, 0.5, 1, 2];
+  soup_values = [0, 0.5, 1, 2];
+  main_dish_values = [0, 0.5, 1, 2];
 
   constructor(private dataStorageService: DataStorageService, private router: Router) { }
 
@@ -72,6 +72,8 @@ export class FoodSleepItemComponent implements OnInit {
       this.image_br = this.images[1];
     } else if (value == 1) {
       this.image_br = this.images[0];
+    } else if (value == 2) {
+      this.image_br = this.images[4];
     } else {
       this.image_br = this.images[3];
     }
@@ -84,6 +86,8 @@ export class FoodSleepItemComponent implements OnInit {
       this.image_soup = this.images[1];
     } else if (value == 1) {
       this.image_soup = this.images[0];
+    } else if (value == 2) {
+      this.image_soup = this.images[4];
     } else {
       this.image_soup = this.images[3];
     }
@@ -96,6 +100,8 @@ export class FoodSleepItemComponent implements OnInit {
       this.image_md = this.images[1];
     } else if (value == 1) {
       this.image_md = this.images[0];
+    } else if (value == 2) {
+      this.image_md = this.images[4];
     } else {
       this.image_md = this.images[3];
     }
@@ -156,6 +162,11 @@ export class FoodSleepItemComponent implements OnInit {
       this.food_sleepEl.breakfast = this.breakfast_values[0];
       this.onFoodClick();
     }
+    else if (this.image_br == this.images[2]) {
+      this.image_br = this.images[4];
+      this.food_sleepEl.breakfast = this.breakfast_values[3];
+      this.onFoodClick();
+    }
     else {
       this.image_br = this.images[0];
       this.food_sleepEl.breakfast = this.breakfast_values[2];
@@ -172,6 +183,10 @@ export class FoodSleepItemComponent implements OnInit {
     else if (this.image_soup == this.images[1]) {
       this.image_soup = this.images[2];
       this.food_sleepEl.soup = this.soup_values[0];
+      this.onFoodClick();
+    } else if (this.image_soup == this.images[2]) {
+      this.image_soup = this.images[4];
+      this.food_sleepEl.soup = this.soup_values[4];
       this.onFoodClick();
     }
     else {
@@ -190,6 +205,10 @@ export class FoodSleepItemComponent implements OnInit {
     else if (this.image_md == this.images[1]) {
       this.image_md = this.images[2];
       this.food_sleepEl.main_dish = this.main_dish_values[0];
+      this.onFoodClick();
+    } else if (this.image_md == this.images[2]) {
+      this.image_md = this.images[4];
+      this.food_sleepEl.main_dish = this.main_dish_values[4];
       this.onFoodClick();
     }
     else {

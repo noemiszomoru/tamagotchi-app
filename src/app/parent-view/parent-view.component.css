@@ -24,3 +24,28 @@ img {
 li {
     font-weight: 600;
 }
+
+.legend ul {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.legend li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.legend li img {
+    width: 32px;
+}
+
+.legend li p {
+    flex: 30%;
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 0;
+    line-height: 23px;
+}

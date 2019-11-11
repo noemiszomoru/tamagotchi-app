@@ -1,41 +1,66 @@
 .datePicker {
-  text-align: center;
-  font-style: italic;
-  color: rgb(83, 77, 77);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    text-align: center;
+    font-style: italic;
+    color: rgb(83, 77, 77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dateHeader {
-  margin: 0;
+    margin: 0;
 }
 
 h5 {
-  display: inline-block;
-  padding: 20px;
+    display: inline-block;
+    padding: 20px;
 }
 
 img {
-  width: 12%;
-  padding: 0 10px 10px 10px 10px;
-  margin: 0 10px 10px 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  overflow: hidden;
-  /* display: inline-block; */
+    width: 12%;
+    padding: 0 10px 10px 10px 10px;
+    margin: 0 10px 10px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    /* display: inline-block; */
 }
 
 .img-section {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .img-circle {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 button {
-  display: inline-block;
+    display: inline-block;
+}
+
+.legend ul {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.legend li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.legend li img {
+    width: 32px;
+    margin: 0;
+}
+
+.legend li p {
+    flex: 30%;
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 0;
+    line-height: 23px;
 }

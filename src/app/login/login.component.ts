@@ -10,7 +10,11 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    if (authService.isLoggedIn()) {
+      router.navigate(['food-sleep']);
+    }
+  }
 
   ngOnInit() {
 

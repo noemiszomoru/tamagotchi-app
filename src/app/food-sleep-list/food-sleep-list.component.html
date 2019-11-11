@@ -30,3 +30,23 @@
         <app-food-sleep-item *ngFor="let item of food_sleep " [food_sleepEl]="item " [dateIdentifier]="dateIdentifier "></app-food-sleep-item>
     </div>
 </div>
+
+<div class="legend">
+    <ul>
+        <li class="legend-item"><img src="{{images[3]}}">
+            <p>No info</p>
+        </li>
+        <li class="legend-item"><img src="{{images[2]}}">
+            <p>Ate nothing</p>
+        </li>
+        <li class="legend-item"><img src="{{images[1]}}">
+            <p>Ate half of the food</p>
+        </li>
+        <li class="legend-item"><img src="{{images[0]}}">
+            <p>Ate everything</p>
+        </li>
+        <li class="legend-item"><img src="{{images[4]}}">
+            <p>Asked for a second serving</p>
+        </li>
+    </ul>
+</div>

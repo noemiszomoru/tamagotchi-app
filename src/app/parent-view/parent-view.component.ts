@@ -14,7 +14,7 @@ import { TimepickerComponent } from '../food-sleep-item/timepicker/timepicker.co
 export class ParentViewComponent implements OnInit {
   @Input("time") time: TimepickerComponent;
 
-  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png'];
+  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png', '../assets/food2.png'];
 
   private food_sleep: FoodSleep[] = [];
   food_sleep$: Observable<any>;

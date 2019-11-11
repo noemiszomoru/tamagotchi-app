@@ -37,17 +37,33 @@
                         <figcaption class="figure-caption">Main Dish</figcaption>
                     </figure>
                     <figure class="figure-sleep">
-                        <img *ngIf="item.sleepDuration !== '00:00'" src='../assets/sleep.png'
-                            class="figure-sleep img-fluid rounded">
-                        <img *ngIf="item.sleepDuration == '00:00'" src='../assets/sleep-null.png'
-                            class="figure-sleep img-fluid rounded">
+                        <img *ngIf="item.sleepDuration !== '00:00'" src='../assets/sleep.png' class="figure-sleep img-fluid rounded">
+                        <img *ngIf="item.sleepDuration == '00:00'" src='../assets/sleep-null.png' class="figure-sleep img-fluid rounded">
                         <figcaption class="figure-caption">{{ item.sleepDuration }}</figcaption>
                         <!-- <hr> -->
                         <!-- <figcaption class="figure-caption">{{ item.sleepStartTime }} - {{ item.sleepEndTime }}</figcaption> -->
                     </figure>
                     <hr>
                 </ul>
+                <div class="legend">
+                    <ul>
+                        <li class="legend-item"><img src="{{images[3]}}">
+                            <p>No info</p>
+                        </li>
+                        <li class="legend-item"><img src="{{images[2]}}">
+                            <p>Ate nothing</p>
+                        </li>
+                        <li class="legend-item"><img src="{{images[1]}}">
+                            <p>Ate half of the food</p>
+                        </li>
+                        <li class="legend-item"><img src="{{images[0]}}">
+                            <p>Ate everything</p>
+                        </li>
+                        <li class="legend-item"><img src="{{images[4]}}">
+                            <p>Asked for a second serving</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -25,6 +25,8 @@ export class FoodSleepListComponent implements OnInit {
   dateHeader: string;
   dateIdentifier: string;
 
+  images = ['../assets/food.png', '../assets/half-food.png', '../assets/empty-food.png', '../assets/food-null.png', '../assets/food2.png'];
+
   constructor(private dataStorageService: DataStorageService, private route: ActivatedRoute, private router: Router) {
 
     this.dataStorageService.getGroups().subscribe((groups: Group[]) => {

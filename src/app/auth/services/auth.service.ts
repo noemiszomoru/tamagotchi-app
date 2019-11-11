@@ -76,10 +76,10 @@ export class AuthService {
                 tap(tokens => this.doLoginUser(user.username, tokens)),
                 mapTo(true),
                 catchError(error => {
-                    if (error.error) {
-                        alert(error.error);
+                    if (error.status == 0) {
+                        alert("Server offline");
                     } else {
-                        alert(JSON.stringify(error));
+                        alert("Unknown server error: " + error.message);
                     }
                     return of(false);
                 }));
