@@ -1,2 +1,2 @@
-<div id="timepicker" class="timepicker noselect" (touchstart)="mouseDown($event)" (mousedown)="mouseDown($event)">
+<div id="timepicker" class="timepicker noselect" [ngClass]="{ high: high }" (touchstart)="mouseDown($event)" (mousedown)="mouseDown($event)">
     {{formattedTime}}</div>

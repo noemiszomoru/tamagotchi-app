@@ -30,6 +30,8 @@ export class TimepickerComponent implements OnInit {
 
   private mouseMode = false;
 
+  private high = false;
+
   formattedTime = '13:00';
 
 
@@ -39,10 +41,6 @@ export class TimepickerComponent implements OnInit {
   }
 
   mouseDown = (ev) => {
-    console.log('down');
-    // ev.stopImmediatePropagation();
-    // ev.stopPropagation();
-    // ev.preventDefault();
 
     // We check here if this is an event from mouse or from touch
     if (ev.pageX) {
@@ -71,11 +69,10 @@ export class TimepickerComponent implements OnInit {
     }
     this.startTime = this.time.hour * 60 + this.time.minute;
 
-    // console.log(this.startTime);
+    this.high = true;
   }
 
   mouseMove = (ev) => {
-    console.log(ev);
     if (this.mouseMode) {
       this.dragTime = Math.round((this.startTime + (ev.pageX - this.startOffset) / this.dragStep) / 15) * 15;
     } else {
@@ -94,13 +91,12 @@ export class TimepickerComponent implements OnInit {
   }
 
   mouseUp = (ev) => {
-    console.log('up');
     window.removeEventListener('touchmove', this.mouseMove);
     window.removeEventListener('touchend', this.mouseUp);
 
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mousetouchend', this.mouseUp);
-    // this.onTimeMove();
+    this.high = false;
   }
 
   pad(value, character, length) {
@@ -116,18 +112,5 @@ export class TimepickerComponent implements OnInit {
     this.formattedTime = this.pad(this.time.hour, '0', 2) + ':' + this.pad(this.time.minute, '0', 2);
     this.dragTime = this.time.hour * 60 + this.time.minute;
   }
-
-  // onTimeMove() {
-  //   const sleep_entry = new SleepEntry(this.food_sleepEl.pk, this.dateIdentifier, this.start, this.end);
-  //   this.dataStorageService.addSleepData(sleep_entry).subscribe(() => {
-  //     this.router.navigate(['food-sleep']);
-  //   });
-  //   console.log('backend');
-  //   console.log(this.food_sleepEl.pk);
-  //   console.log(this.dragTime);
-  //   console.log(sleep_entry);
-
-
-  // }
 
 }
