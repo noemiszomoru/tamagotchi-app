@@ -117,20 +117,22 @@ export class FoodSleepItemComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    window.removeEventListener('mouseup', this.onTimeMove);
-    window.removeEventListener('touchend', this.onTimeMove);
+    window.removeEventListener('mouseup', this.onTimeStop);
+    window.removeEventListener('touchend', this.onTimeStop);
   }
 
-  onTimeMove = () => {
-    window.removeEventListener('mouseup', this.onTimeMove);
-    window.removeEventListener('touchend', this.onTimeMove);
+  onTimeStop = () => {
+    window.removeEventListener('mouseup', this.onTimeStop);
+    window.removeEventListener('touchend', this.onTimeStop);
 
     this.dispatchTimeChange();
   }
 
   monitorTimeDrag() {
-    window.addEventListener('mouseup', this.onTimeMove);
-    window.addEventListener('touchend', this.onTimeMove);
+    window.removeEventListener('mouseup', this.onTimeStop);
+    window.removeEventListener('touchend', this.onTimeStop);
+    window.addEventListener('mouseup', this.onTimeStop);
+    window.addEventListener('touchend', this.onTimeStop);
   }
 
   dispatchTimeChange() {
